@@ -6,7 +6,8 @@
     <title>Bekjentskap med Kotlin — et reisebrev</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/theme/night.min.css" id="theme"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/theme/night.min.css"
+          id="theme"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/plugin/highlight/monokai.css"/>
 
     <style>
@@ -643,15 +644,17 @@ val sendt = ordre.copy(status = Status.SENDT) // slik gjør man det</code></pre>
             <pre><code class="language-java" data-noescape data-trim>if (melding instanceof OrdreOpprettet event) {
     behandle(event.getOrdreId());
 }</code></pre>
+            <blockquote class="fragment">
+                Den manuelle cast-smerten i Java ble bedre med pattern matching i Java 16.
+            </blockquote>
             <p class="code-label kotlin" style="margin-top:0.5em;">Kotlin</p>
             <pre class="fragment"><code class="language-kotlin" data-noescape data-trim>if (melding is OrdreOpprettet) {
     behandle(melding.ordreId) // allerede castet — kompilatoren vet
 }</code></pre>
             <blockquote class="fragment">
-                Java-folk husker kanskje den manuelle cast-smerten. Har blitt bedre med pattern matching.
+                Kotlin har hatt smart cast fra dag én.
             </blockquote>
         </section>
-
         <!-- Slide 9a: String templates -->
         <section>
             <span class="section-badge">I bagasjen</span>
@@ -862,7 +865,8 @@ val tekst = when (status) {
                 </svg>
                 Scope functions
             </h2>
-            <p class="code-label" style="color:var(--text-muted);">Uten scope functions — vanlig imperativ tilnærming</p>
+            <p class="code-label" style="color:var(--text-muted);">Uten scope functions — vanlig imperativ
+                tilnærming</p>
             <pre><code class="language-kotlin" data-noescape data-trim>log.info("Behandler $ordre")
 val beregnet = beregn(ordre)
 beregnet.valider()
@@ -903,7 +907,8 @@ suspend fun hentOrdre(id: UUID): Ordre =
                 Kraftig, litt nye konsepter å lære.
             </p>
             <blockquote class="fragment" style="margin-top:0.6em;">
-                Kotlin løser blokkerende tråder med coroutines og suspend functions. Java 21 kom med virtual threads - ikke helt det samme, men et steg i samme retning.
+                Kotlin løser blokkerende tråder med coroutines og suspend functions. Java 21 kom med virtual threads -
+                ikke helt det samme, men et steg i samme retning.
             </blockquote>
         </section>
 
@@ -925,9 +930,19 @@ suspend fun hentOrdre(id: UUID): Ordre =
                 Spring + Kotlin
             </h2>
             <ul>
-                <li class="fragment fade-up">Spring Boot har hatt solid Kotlin-støtte siden 2.x — Spring Boot 4 tar det et steg videre</li>
-                <li class="fragment fade-up">Spring Boot 4 setter Kotlin 2.2 som minimum baseline — og planlegger å følge nye Kotlin-versjoner release for release <a href="https://spring.io/blog/2025/12/18/next-level-kotlin-support-in-spring-boot-4" target="_blank" style="font-size:0.7em; color:var(--text-muted); text-decoration:none;">(Spring Blog)</a></li>
-                <li class="fragment fade-up">JetBrains og Spring inngikk strategisk partnerskap i 2025 — mål: gjøre Spring Boot 4 det beste rammeverket for Kotlin-backend <a href="https://blog.jetbrains.com/kotlin/2025/05/strategic-partnership-with-spring" target="_blank" style="font-size:0.7em; color:var(--text-muted); text-decoration:none;">(JetBrains Blog)</a></li>
+                <li class="fragment fade-up">Spring Boot har hatt solid Kotlin-støtte siden 2.x — Spring Boot 4 tar det
+                    et steg videre
+                </li>
+                <li class="fragment fade-up">Spring Boot 4 setter Kotlin 2.2 som minimum baseline — og planlegger å
+                    følge nye Kotlin-versjoner release for release <a
+                            href="https://spring.io/blog/2025/12/18/next-level-kotlin-support-in-spring-boot-4"
+                            target="_blank" style="font-size:0.7em; color:var(--text-muted); text-decoration:none;">(Spring
+                        Blog)</a></li>
+                <li class="fragment fade-up">JetBrains og Spring inngikk strategisk partnerskap i 2025 — mål: gjøre
+                    Spring Boot 4 det beste rammeverket for Kotlin-backend <a
+                            href="https://blog.jetbrains.com/kotlin/2025/05/strategic-partnership-with-spring"
+                            target="_blank" style="font-size:0.7em; color:var(--text-muted); text-decoration:none;">(JetBrains
+                        Blog)</a></li>
             </ul>
         </section>
 
@@ -979,7 +994,8 @@ suspend fun hentOrdre(id: UUID): Ordre =
             <pre style="font-size:0.4em;"><code class="language-java" data-noescape data-trim>sealed interface Hendelse
     permits Opprettet, Bekreftet, Annullert {}</code></pre>
 
-            <p class="code-label java" style="margin-top:0.5em;">Pattern Matching (Java 16 - 21) - eksempel med casting</p>
+            <p class="code-label java" style="margin-top:0.5em;">Pattern Matching (Java 16 - 21) - eksempel med
+                casting</p>
             <pre style="font-size:0.4em;"><code class="language-java" data-noescape data-trim>if (melding instanceof OrdreOpprettet event) {
     behandle(event.getOrdreId());
 }</code></pre>
@@ -1212,7 +1228,8 @@ suspend fun hentOrdre(id: UUID): Ordre =
             <h1>Takk!</h1>
             <p style="font-size:0.42em; color:var(--text-muted);">Spørsmål, kommentarer, erfaringer?</p>
             <p style="font-size:0.38em; color:var(--kotlin-purple); margin-top:1em;">
-                Prøv ut Kotlin: <a href="https://play.kotlinlang.org" target="_blank" style="color:var(--kotlin-teal); text-decoration:none;">play.kotlinlang.org</a>
+                Prøv ut Kotlin: <a href="https://play.kotlinlang.org" target="_blank"
+                                   style="color:var(--kotlin-teal); text-decoration:none;">play.kotlinlang.org</a>
             </p>
             <p class="title-meta">
                 Espen Ønvik Pedersen<br/>
