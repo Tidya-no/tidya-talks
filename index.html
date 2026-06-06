@@ -494,7 +494,7 @@
                 </div>
                 <div class="stat-card fragment">
                     <span class="stat-number">2,5M</span>
-                    <span class="stat-label">Kotlin-utviklere globalt<br/><span style="color:var(--text-muted)">(Java: ~23M)</span><br/><a
+                    <span class="stat-label">Kotlin-utviklere finnes globalt<br/><span style="color:var(--text-muted)">(Java: ~23M)</span><br/><a
                             href="https://blog.jetbrains.com/kotlin/2025/05/kotlinconf-2025-language-features-ai-powered-development-and-kotlin-multiplatform/"
                             target="_blank"
                             style="color:var(--kotlin-teal);font-size:0.85em;">KotlinConf 2025</a></span>
@@ -507,7 +507,7 @@
                 </div>
                 <div class="stat-card fragment">
                     <span class="stat-number">27%</span>
-                    <span class="stat-label">Av Spring-utviklere har brukt Kotlin<br/>Rod Johnson (skaperen av Spring)<br/><a
+                    <span class="stat-label">av Spring-utviklere har brukt Kotlin<br/>Rod Johnson (skaperen av Spring)<br/><a
                             href="https://blog.jetbrains.com/kotlin/2025/05/strategic-partnership-with-spring/"
                             target="_blank"
                             style="color:var(--kotlin-teal); font-size:0.85em;">KotlinConf 2025</a></span>
@@ -636,9 +636,8 @@ val sendt = ordre.copy(status = Status.SENDT) // slik gjør man det</code></pre>
                 </svg>
                 Smart casts
             </h2>
-            <p class="code-label java">Java</p>
-            <pre><code class="language-java" data-noescape data-trim>if (melding instanceof OrdreOpprettet) {
-    OrdreOpprettet event = (OrdreOpprettet) melding; // manuell cast
+            <p class="code-label java">Java 16+</p>
+            <pre><code class="language-java" data-noescape data-trim>if (melding instanceof OrdreOpprettet event) {
     behandle(event.getOrdreId());
 }</code></pre>
             <p class="code-label kotlin" style="margin-top:0.5em;">Kotlin</p>
@@ -646,7 +645,7 @@ val sendt = ordre.copy(status = Status.SENDT) // slik gjør man det</code></pre>
     behandle(melding.ordreId) // allerede castet — kompilatoren vet
 }</code></pre>
             <blockquote class="fragment">
-                "Java-folk kjenner seg kanskje igjen i den manuelle cast-smerten.
+                Java-folk husker kanskje den manuelle cast-smerten. Har blitt bedre med pattern matching.
             </blockquote>
         </section>
 
@@ -704,7 +703,7 @@ void opprett(String navn, String type, boolean aktiv) { ... }</code></pre>
 opprett("Espen")
 opprett("Espen", aktiv = false) // named arguments</code></pre>
             <blockquote class="fragment">
-                Eliminerer overload-pyramider. Named arguments gjør kallsteder selvdokumenterende.
+                Eliminerer overload-pyramider. Named arguments gjør kallsteder mer dokumenterende.
             </blockquote>
             <p class="fragment source-note" style="color:var(--kotlin-orange); font-style:normal;">
                 ⚠ Java har ingen plan for default parameters eller named arguments — Kotlin har fortsatt et klart
@@ -762,13 +761,13 @@ opprett("Espen", aktiv = false) // named arguments</code></pre>
             <pre><code class="language-java" data-noescape data-trim>List.of(1, 2, 3).stream()
     .filter(n -> n > 1)
     .toList();</code></pre>
-            <p class="code-label kotlin" style="margin-top:0.5em;">Kotlin — lambda utenfor parentesene, én parameter
+            <p class="code-label kotlin" style="margin-top:0.5em;">Kotlin — lambda utenfor parentesene og en parameter
                 heter automatisk <code>it</code></p>
             <pre class="fragment"><code class="language-kotlin" data-noescape data-trim>listOf(1, 2, 3).filter { it > 1 }</code></pre>
             <blockquote class="fragment">
                 "Første gang jeg så dette: hva er det her? <br/>
-                Andre gang: okei, okei..<br/>
-                Tredje gang: of course!"
+                Andre gang: okei..<br/>
+                Tredje gang: ja, dette funker!"
             </blockquote>
         </section>
 
@@ -790,19 +789,19 @@ opprett("Espen", aktiv = false) // named arguments</code></pre>
                 Extension functions
             </h2>
             <p class="code-label java">Java — statisk utility-metode</p>
-            <pre style="font-size:0.4em;"><code class="language-java" data-noescape data-trim>public class OrgNrUtils {
-    public static boolean erGyldig(String orgNr) {
+            <pre style="font-size:0.4em;"><code class="language-java" data-noescape data-trim>public class OrgnrUtils {
+    public static boolean harNiSifre(String orgNr) {
         return orgNr.matches("\\d{9}");
     }
 }
-OrgNrUtils.erGyldig("974760843"); // true</code></pre>
+OrgnrUtils.harNiSifre("974760843"); // true</code></pre>
             <p class="code-label kotlin" style="margin-top:0.5em;">Kotlin — extension function</p>
-            <pre class="fragment" style="font-size:0.4em;"><code class="language-kotlin" data-noescape data-trim>fun String.erGyldigOrganisasjonsnummer(): Boolean =
+            <pre class="fragment" style="font-size:0.4em;"><code class="language-kotlin" data-noescape data-trim>fun String.harNiSifre(): Boolean =
     this.matches(Regex("\\d{9}"))
 
 "974760843".erGyldigOrganisasjonsnummer() // true</code></pre>
             <blockquote class="fragment">
-                Extension functions finnes ikke i Java, og er heller ikke planlagt.
+                Extension functions finnes ikke i Java, og ser heller ikke ut til å være planlagt.
             </blockquote>
         </section>
 
