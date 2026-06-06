@@ -985,14 +985,13 @@ Thread.startVirtualThread(() -> {
             <pre style="font-size:0.4em;"><code class="language-java" data-noescape data-trim>sealed interface Hendelse
     permits Opprettet, Bekreftet, Annullert {}</code></pre>
 
-            <p class="code-label java" style="margin-top:0.5em;">Pattern Matching (Java 16+) - eksempel med casting</p>
-            <pre style="font-size:0.4em;"><code class="language-java" data-noescape data-trim>// Pattern matching med instanceof
-if (melding instanceof OrdreOpprettet event) {
+            <p class="code-label java" style="margin-top:0.5em;">Pattern Matching (Java 16 - 21) - eksempel med casting</p>
+            <pre style="font-size:0.4em;"><code class="language-java" data-noescape data-trim>if (melding instanceof OrdreOpprettet event) {
     behandle(event.getOrdreId());
 }</code></pre>
 
             <blockquote class="fragment" style="margin-top:0.5em; font-size:0.45em;">
-                Kotlin hadde begge fra starten. Java fikk dem i 2016 og 2021.
+                Kotlin hadde disse fra starten. Java fikk dem i 2016 og 2021.
             </blockquote>
         </section>
 
@@ -1033,9 +1032,8 @@ Thread.startVirtualThread(() -> {
     var resultat = kallEksternApi(id);
 });</code></pre>
             <blockquote class="fragment" style="margin-top:0.3em; font-size:0.42em;">
-                Project Loom — fullført 2024
+                Kotlin hadde couroutines fra 2016. Java fikk virtual threads i 2024
             </blockquote>
-            <p class="source-note">Project Loom fullført 2024 · Project Amber levert</p>
         </section>
 
         <!-- Slide 18: Krystallkula -->
@@ -1085,7 +1083,7 @@ Thread.startVirtualThread(() -> {
                 </tr>
                 <tr class="fragment">
                     <td>Amber</td>
-                    <td>Records, sealed classes, pattern matching — siden Java 16+, løpende forbedringer siden</td>
+                    <td>Records, sealed classes, pattern matching — Java 16 til 21</td>
                     <td><span class="tag green" style="font-size:0.8em;">Levert</span></td>
                 </tr>
                 <tr class="fragment">
@@ -1096,7 +1094,7 @@ Thread.startVirtualThread(() -> {
                 </tbody>
             </table>
             <blockquote class="fragment" style="font-size:0.45em; margin-top:0.4em;">
-                Java lukker gapet — det skjer release for release. Men Kotlin var der først.
+                Java lukker gapet — det skjer release for release. Kotlin var der først.
             </blockquote>
         </section>
 
@@ -1123,9 +1121,9 @@ Thread.startVirtualThread(() -> {
             </h2>
             <ul>
                 <li class="fragment fade-up">Kotlin er et gjennomtenkt språk</li>
-                <li class="fragment fade-up">Det har vært med oss lenge nå — ikke hype</li>
-                <li class="fragment fade-up">Mengde kode går ned og språket er elegant</li>
-                <li class="fragment fade-up">Tvinger frem null-safety og immutability - har mye syntaktisk sukker</li>
+                <li class="fragment fade-up">Det har vært med oss lenge nå — ikke en hype</li>
+                <li class="fragment fade-up">Koden blir mer kompakt - øker lesbarhet</li>
+                <li class="fragment fade-up">Nullpointers er (nesten) et saga blott</li>
                 <li class="fragment fade-up">Spring + Kotlin fungerer meget bra — lite friksjon i hverdagen</li>
                 <li class="fragment fade-up">Java henter inn — men Kotlin var der først, og er der nå</li>
             </ul>
