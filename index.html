@@ -949,7 +949,7 @@ Thread.startVirtualThread(() -> {
             <div style="display:flex; flex-wrap:wrap; gap:0.5em; justify-content:center; margin-top:0.8em;">
                 <span class="tag java fragment">Records (Java 16)</span>
                 <span class="tag java fragment">Sealed classes (Java 17)</span>
-                <span class="tag java fragment">Pattern matching (Java 21)</span>
+                <span class="tag java fragment">Pattern matching (Java 16+)</span>
                 <span class="tag java fragment">Virtual Threads (Java 21)</span>
                 <span class="tag java fragment">Value Classes — preview (JDK 26)</span>
                 <span class="tag java fragment">Null-aware typer — under arbeid</span>
@@ -985,7 +985,7 @@ Thread.startVirtualThread(() -> {
             <pre style="font-size:0.4em;"><code class="language-java" data-noescape data-trim>sealed interface Hendelse
     permits Opprettet, Bekreftet, Annullert {}</code></pre>
 
-            <p class="code-label java" style="margin-top:0.5em;">Pattern Matching (Java 16+)</p>
+            <p class="code-label java" style="margin-top:0.5em;">Pattern Matching (Java 16+) - eksempel med casting</p>
             <pre style="font-size:0.4em;"><code class="language-java" data-noescape data-trim>// Pattern matching med instanceof
 if (melding instanceof OrdreOpprettet event) {
     behandle(event.getOrdreId());
@@ -1085,7 +1085,7 @@ Thread.startVirtualThread(() -> {
                 </tr>
                 <tr class="fragment">
                     <td>Amber</td>
-                    <td>Records, sealed classes, pattern matching — siden Java 16</td>
+                    <td>Records, sealed classes, pattern matching — siden Java 16+, løpende forbedringer siden</td>
                     <td><span class="tag green" style="font-size:0.8em;">Levert</span></td>
                 </tr>
                 <tr class="fragment">
