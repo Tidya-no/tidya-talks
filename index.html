@@ -526,9 +526,9 @@
              SEKSJON 3: DET SOM SATTE SEG
              ═══════════════════════════════════ -->
 
-        <!-- Slide 4: Det som satte seg -->
+        <!-- Slide 4: I bagasjen -->
         <section>
-            <span class="section-badge">Det som satte seg</span>
+            <span class="section-badge">I bagasjen</span>
             <h2>
                 <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
                     <defs>
@@ -541,9 +541,9 @@
                     </defs>
                     <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kg-slide-1)"/>
                 </svg>
-                Det som har vokst på meg
+                Det som dukket opp på reisen
             </h2>
-            <p style="font-size:0.55em; color:var(--text-muted);">Seks måneder. Her er det som faktisk satte seg.</p>
+            <p style="font-size:0.55em; color:var(--text-muted);">Seks måneder, her er det som dukket opp:</p>
             <div style="display:flex; flex-wrap:wrap; gap:0.4em; justify-content:center; margin-top:0.6em;">
                 <span class="tag">Null-safety + Elvis (?:)</span>
                 <span class="tag">val / var</span>
@@ -555,12 +555,14 @@
                 <span class="tag">Top-level functions</span>
                 <span class="tag">Trailing lambdas</span>
                 <span class="tag">Extension functions</span>
+                <span class="tag">Coroutines</span>
+                <span class="tag">Scope functions</span>
             </div>
         </section>
 
         <!-- Slide 5: Null-safety -->
         <section>
-            <span class="section-badge">Det som satte seg</span>
+            <span class="section-badge">I bagasjen</span>
             <h2>
                 <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
                     <defs>
@@ -589,7 +591,7 @@ val store = navn?.uppercase() ?: "UKJENT" // ?: Elvis operator: fallback-verdi</
 
         <!-- Slide 6: val/var + data class + copy() -->
         <section>
-            <span class="section-badge">Det som satte seg</span>
+            <span class="section-badge">I bagasjen</span>
             <h2>
                 <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
                     <defs>
@@ -622,7 +624,7 @@ val sendt = ordre.copy(status = Status.SENDT) // slik gjør man det</code></pre>
 
         <!-- Slide 7: Smart casts -->
         <section>
-            <span class="section-badge">Det som satte seg</span>
+            <span class="section-badge">I bagasjen</span>
             <h2>
                 <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
                     <defs>
@@ -652,7 +654,7 @@ val sendt = ordre.copy(status = Status.SENDT) // slik gjør man det</code></pre>
 
         <!-- Slide 9a: String templates -->
         <section>
-            <span class="section-badge">Det som satte seg</span>
+            <span class="section-badge">I bagasjen</span>
             <h2>
                 <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
                     <defs>
@@ -679,7 +681,7 @@ val sendt = ordre.copy(status = Status.SENDT) // slik gjør man det</code></pre>
 
         <!-- Slide 9b: Default params + named arguments -->
         <section>
-            <span class="section-badge">Det som satte seg</span>
+            <span class="section-badge">I bagasjen</span>
             <h2>
                 <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
                     <defs>
@@ -714,7 +716,7 @@ opprett("Espen", aktiv = false) // named arguments</code></pre>
 
         <!-- Slide 10: Top-level functions -->
         <section>
-            <span class="section-badge">Det som satte seg</span>
+            <span class="section-badge">I bagasjen</span>
             <h2>
                 <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
                     <defs>
@@ -743,7 +745,7 @@ opprett("Espen", aktiv = false) // named arguments</code></pre>
 
         <!-- Slide 11a: Trailing lambdas -->
         <section>
-            <span class="section-badge">Det som satte seg</span>
+            <span class="section-badge">I bagasjen</span>
             <h2>
                 <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
                     <defs>
@@ -774,7 +776,7 @@ opprett("Espen", aktiv = false) // named arguments</code></pre>
 
         <!-- Slide 11b: Extension functions -->
         <section>
-            <span class="section-badge">Det som satte seg</span>
+            <span class="section-badge">I bagasjen</span>
             <h2>
                 <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
                     <defs>
@@ -808,7 +810,7 @@ OrgnrUtils.harNiSifre("974760843"); // true</code></pre>
 
         <!-- Slide 12: when + sealed classes -->
         <section>
-            <span class="section-badge">Det som satte seg</span>
+            <span class="section-badge">I bagasjen</span>
             <h2>
                 <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
                     <defs>
@@ -840,12 +842,12 @@ val tekst = when (status) {
         </section>
 
         <!-- ═══════════════════════════════════
-             SEKSJON 4: ÆRLIG SKEPSIS
+             SEKSJON 4: LITT SKEPSIS
              ═══════════════════════════════════ -->
 
         <!-- Slide 13: Scope functions -->
         <section>
-            <span class="section-badge">Det som trenger modning</span>
+            <span class="section-badge">I bagasjen</span>
             <h2>
                 <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
                     <defs>
@@ -872,13 +874,13 @@ val resultat = lagre(beregnet)</code></pre>
     .apply { valider() }
     .run { lagre(this) }</code></pre>
             <blockquote class="fragment" style="margin-top:0.6em;">
-                Gjør det samme — men er det mer lesbart? 🤔
+                Gjør det samme — men er det mer lesbart?
             </blockquote>
         </section>
 
         <!-- Slide 14: Coroutines -->
         <section>
-            <span class="section-badge">Det som trenger modning</span>
+            <span class="section-badge">I bagasjen</span>
             <h2>
                 <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
                     <defs>
@@ -900,19 +902,14 @@ suspend fun hentOrdre(id: UUID): Ordre =
             <p style="font-size:0.38em; color:var(--text-muted); margin-top:0.4em;">
                 Kraftig, litt nye konsepter å lære.
             </p>
-            <p class="code-label java" style="margin-top:0.5em;">Java 21+ — Virtual Threads</p>
-            <pre class="fragment" style="font-size:0.4em;"><code class="language-java" data-noescape data-trim>// Java — Virtual Thread (fire-and-forget, ingen retur)
-Thread.startVirtualThread(() -> {
-    kallEksternApi(id);
-});</code></pre>
             <blockquote class="fragment" style="margin-top:0.6em;">
-                Samme prinsipp — tråden blokkerer ikke. Men ikke direkte sammenlignbart: coroutines returnerer resultatet naturlig, virtual threads krever mer kode for det samme.
+                Kotlin løser blokkerende tråder med coroutines og suspend functions. Java 21 kom med virtual threads - ikke helt det samme, men et steg i samme retning.
             </blockquote>
         </section>
 
         <!-- Slide 15: Spring + Kotlin -->
         <section>
-            <span class="section-badge">I det daglige</span>
+            <span class="section-badge">Ute i felten</span>
             <h2>
                 <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
                     <defs>
@@ -975,7 +972,7 @@ Thread.startVirtualThread(() -> {
                 Det Java har levert
             </h2>
 
-            <p class="code-label java" style="margin-top:0.4em;">Records (Java 16) — ingen Lombok lenger</p>
+            <p class="code-label java" style="margin-top:0.4em;">Records (Java 16) — reduserer behovet for Lombok</p>
             <pre style="font-size:0.4em;"><code class="language-java" data-noescape data-trim>record Ordre(UUID id, Status status) {}</code></pre>
 
             <p class="code-label java" style="margin-top:0.5em;">Sealed classes (Java 17)</p>
@@ -1024,10 +1021,9 @@ Thread.startVirtualThread(() -> {
             </blockquote>
 
             <p class="code-label java" style="margin-top:0.4em;">Virtual Threads — Project Loom (Java 21)</p>
-            <pre style="font-size:0.38em;"><code class="language-java" data-noescape data-trim>// kallEksternApi() kan blokkere — Virtual Threads håndterer ventingen for deg
-Thread.startVirtualThread(() -> {
-    var resultat = kallEksternApi(id);
-});</code></pre>
+            <pre style="font-size:0.38em;"><code class="language-java" data-noescape data-trim>try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
+    return executor.submit(() -> kallEksternApi(id)).get();
+}</code></pre>
             <blockquote class="fragment" style="margin-top:0.3em; font-size:0.42em;">
                 Kotlin hadde couroutines fra 2016. Java fikk virtual threads i 2024
             </blockquote>
