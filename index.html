@@ -768,7 +768,7 @@ opprett("Espen", aktiv = false) // named arguments</code></pre>
             <blockquote class="fragment">
                 "Første gang jeg så dette: hva er det her? <br/>
                 Andre gang: okei..<br/>
-                Tredje gang: ja, dette funker!"
+                Tredje gang: hmm, dette er faktisk ganske bra!"
             </blockquote>
         </section>
 
@@ -894,19 +894,19 @@ val resultat = lagre(beregnet)</code></pre>
                 Coroutines
             </h2>
             <p class="code-label kotlin">Kotlin — suspend functions</p>
-            <pre style="font-size:0.4em;"><code class="language-kotlin" data-noescape data-trim>// kallEksternApi() kan blokkere — suspend gjør at tråden ikke sitter og venter
+            <pre style="font-size:0.4em;"><code class="language-kotlin" data-noescape data-trim>// Kotlin — suspend function
 suspend fun hentOrdre(id: UUID): Ordre =
     kallEksternApi(id)</code></pre>
             <p style="font-size:0.38em; color:var(--text-muted); margin-top:0.4em;">
-                Kraftig, men mye nytt å lære.
+                Kraftig, litt nye konsepter å lære.
             </p>
             <p class="code-label java" style="margin-top:0.5em;">Java 21+ — Virtual Threads</p>
-            <pre class="fragment" style="font-size:0.4em;"><code class="language-java" data-noescape data-trim>// kallEksternApi() kan blokkere — Virtual Threads håndterer ventingen for deg
+            <pre class="fragment" style="font-size:0.4em;"><code class="language-java" data-noescape data-trim>// Java — Virtual Thread (fire-and-forget, ingen retur)
 Thread.startVirtualThread(() -> {
-    var resultat = kallEksternApi(id);
+    kallEksternApi(id);
 });</code></pre>
             <blockquote class="fragment" style="margin-top:0.6em;">
-                Samme resultat. Ingen nye konsepter å lære.
+                Samme prinsipp — tråden blokkerer ikke. Men ikke direkte sammenlignbart: coroutines returnerer resultatet naturlig, virtual threads krever mer kode for det samme.
             </blockquote>
         </section>
 
