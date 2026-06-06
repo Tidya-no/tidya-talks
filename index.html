@@ -338,6 +338,18 @@
     </style>
 </head>
 <body>
+<!-- Global SVG definitions for reuse -->
+<svg style="display: none;">
+    <defs>
+        <radialGradient id="kotlin-gradient" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+                        gradientTransform="translate(48 0) rotate(180) scale(48)">
+            <stop stop-color="#E44857"/>
+            <stop offset="0.504494" stop-color="#C711E1"/>
+            <stop offset="1" stop-color="#7F52FF"/>
+        </radialGradient>
+    </defs>
+</svg>
+
 <div class="reveal">
     <div class="slides">
 
@@ -371,15 +383,7 @@
             <span class="section-badge">Intro</span>
             <h2 data-id="main-title">
                 <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <radialGradient id="kg-slide" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
-                                        gradientTransform="translate(48 0) rotate(180) scale(48)">
-                            <stop stop-color="#E44857"/>
-                            <stop offset="0.504494" stop-color="#C711E1"/>
-                            <stop offset="1" stop-color="#7F52FF"/>
-                        </radialGradient>
-                    </defs>
-                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kg-slide)"/>
+                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kotlin-gradient)"/>
                 </svg>
                 Kort om meg
             </h2>
@@ -433,15 +437,7 @@
             <span class="section-badge">Intro</span>
             <h2>
                 <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <radialGradient id="kg-slide" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
-                                        gradientTransform="translate(48 0) rotate(180) scale(48)">
-                            <stop stop-color="#E44857"/>
-                            <stop offset="0.504494" stop-color="#C711E1"/>
-                            <stop offset="1" stop-color="#7F52FF"/>
-                        </radialGradient>
-                    </defs>
-                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kg-slide)"/>
+                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kotlin-gradient)"/>
                 </svg>
                 Hvorfor laget JetBrains Kotlin?
             </h2>
@@ -465,15 +461,7 @@
             <span class="section-badge">Fakta</span>
             <h2>
                 <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <radialGradient id="kg-slide" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
-                                        gradientTransform="translate(48 0) rotate(180) scale(48)">
-                            <stop stop-color="#E44857"/>
-                            <stop offset="0.504494" stop-color="#C711E1"/>
-                            <stop offset="1" stop-color="#7F52FF"/>
-                        </radialGradient>
-                    </defs>
-                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kg-slide)"/>
+                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kotlin-gradient)"/>
                 </svg>
                 Kotlin i verden
             </h2>
@@ -530,15 +518,7 @@
             <span class="section-badge">Det som satte seg</span>
             <h2>
                 <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <radialGradient id="kg-slide" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
-                                        gradientTransform="translate(48 0) rotate(180) scale(48)">
-                            <stop stop-color="#E44857"/>
-                            <stop offset="0.504494" stop-color="#C711E1"/>
-                            <stop offset="1" stop-color="#7F52FF"/>
-                        </radialGradient>
-                    </defs>
-                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kg-slide)"/>
+                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kotlin-gradient)"/>
                 </svg>
                 Det som har vokst på meg
             </h2>
@@ -562,15 +542,7 @@
             <span class="section-badge">Det som satte seg</span>
             <h2>
                 <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <radialGradient id="kg-slide" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
-                                        gradientTransform="translate(48 0) rotate(180) scale(48)">
-                            <stop stop-color="#E44857"/>
-                            <stop offset="0.504494" stop-color="#C711E1"/>
-                            <stop offset="1" stop-color="#7F52FF"/>
-                        </radialGradient>
-                    </defs>
-                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kg-slide)"/>
+                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kotlin-gradient)"/>
                 </svg>
                 Null-safety
             </h2>
@@ -591,15 +563,7 @@ val store = navn?.uppercase() ?: "UKJENT" // ?: Elvis operator: fallback-verdi</
             <span class="section-badge">Det som satte seg</span>
             <h2>
                 <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <radialGradient id="kg-slide" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
-                                        gradientTransform="translate(48 0) rotate(180) scale(48)">
-                            <stop stop-color="#E44857"/>
-                            <stop offset="0.504494" stop-color="#C711E1"/>
-                            <stop offset="1" stop-color="#7F52FF"/>
-                        </radialGradient>
-                    </defs>
-                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kg-slide)"/>
+                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kotlin-gradient)"/>
                 </svg>
                 Immutability som default
             </h2>
@@ -624,15 +588,7 @@ val sendt = ordre.copy(status = Status.SENDT) // slik gjør man det</code></pre>
             <span class="section-badge">Det som satte seg</span>
             <h2>
                 <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <radialGradient id="kg-slide" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
-                                        gradientTransform="translate(48 0) rotate(180) scale(48)">
-                            <stop stop-color="#E44857"/>
-                            <stop offset="0.504494" stop-color="#C711E1"/>
-                            <stop offset="1" stop-color="#7F52FF"/>
-                        </radialGradient>
-                    </defs>
-                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kg-slide)"/>
+                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kotlin-gradient)"/>
                 </svg>
                 Smart casts
             </h2>
@@ -654,15 +610,7 @@ val sendt = ordre.copy(status = Status.SENDT) // slik gjør man det</code></pre>
             <span class="section-badge">Det som satte seg</span>
             <h2>
                 <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <radialGradient id="kg-slide" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
-                                        gradientTransform="translate(48 0) rotate(180) scale(48)">
-                            <stop stop-color="#E44857"/>
-                            <stop offset="0.504494" stop-color="#C711E1"/>
-                            <stop offset="1" stop-color="#7F52FF"/>
-                        </radialGradient>
-                    </defs>
-                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kg-slide)"/>
+                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kotlin-gradient)"/>
                 </svg>
                 String templates
             </h2>
@@ -681,15 +629,7 @@ val sendt = ordre.copy(status = Status.SENDT) // slik gjør man det</code></pre>
             <span class="section-badge">Det som satte seg</span>
             <h2>
                 <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <radialGradient id="kg-slide" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
-                                        gradientTransform="translate(48 0) rotate(180) scale(48)">
-                            <stop stop-color="#E44857"/>
-                            <stop offset="0.504494" stop-color="#C711E1"/>
-                            <stop offset="1" stop-color="#7F52FF"/>
-                        </radialGradient>
-                    </defs>
-                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kg-slide)"/>
+                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kotlin-gradient)"/>
                 </svg>
                 Default parameters + named arguments
             </h2>
@@ -716,15 +656,7 @@ opprett("Espen", aktiv = false) // named arguments</code></pre>
             <span class="section-badge">Det som satte seg</span>
             <h2>
                 <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <radialGradient id="kg-slide" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
-                                        gradientTransform="translate(48 0) rotate(180) scale(48)">
-                            <stop stop-color="#E44857"/>
-                            <stop offset="0.504494" stop-color="#C711E1"/>
-                            <stop offset="1" stop-color="#7F52FF"/>
-                        </radialGradient>
-                    </defs>
-                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kg-slide)"/>
+                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kotlin-gradient)"/>
                 </svg>
                 Ikke alt trenger å leve i en klasse
             </h2>
@@ -745,15 +677,7 @@ opprett("Espen", aktiv = false) // named arguments</code></pre>
             <span class="section-badge">Det som satte seg</span>
             <h2>
                 <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <radialGradient id="kg-slide" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
-                                        gradientTransform="translate(48 0) rotate(180) scale(48)">
-                            <stop stop-color="#E44857"/>
-                            <stop offset="0.504494" stop-color="#C711E1"/>
-                            <stop offset="1" stop-color="#7F52FF"/>
-                        </radialGradient>
-                    </defs>
-                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kg-slide)"/>
+                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kotlin-gradient)"/>
                 </svg>
                 Trailing lambdas
             </h2>
@@ -776,15 +700,7 @@ opprett("Espen", aktiv = false) // named arguments</code></pre>
             <span class="section-badge">Det som satte seg</span>
             <h2>
                 <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <radialGradient id="kg-slide" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
-                                        gradientTransform="translate(48 0) rotate(180) scale(48)">
-                            <stop stop-color="#E44857"/>
-                            <stop offset="0.504494" stop-color="#C711E1"/>
-                            <stop offset="1" stop-color="#7F52FF"/>
-                        </radialGradient>
-                    </defs>
-                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kg-slide)"/>
+                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kotlin-gradient)"/>
                 </svg>
                 Extension functions
             </h2>
@@ -810,15 +726,7 @@ OrgnrUtils.harNiSifre("974760843"); // true</code></pre>
             <span class="section-badge">Det som satte seg</span>
             <h2>
                 <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <radialGradient id="kg-slide" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
-                                        gradientTransform="translate(48 0) rotate(180) scale(48)">
-                            <stop stop-color="#E44857"/>
-                            <stop offset="0.504494" stop-color="#C711E1"/>
-                            <stop offset="1" stop-color="#7F52FF"/>
-                        </radialGradient>
-                    </defs>
-                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kg-slide)"/>
+                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kotlin-gradient)"/>
                 </svg>
                 when + sealed classes
             </h2>
@@ -847,15 +755,7 @@ val tekst = when (status) {
             <span class="section-badge">Det som trenger modning</span>
             <h2>
                 <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <radialGradient id="kg-slide" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
-                                        gradientTransform="translate(48 0) rotate(180) scale(48)">
-                            <stop stop-color="#E44857"/>
-                            <stop offset="0.504494" stop-color="#C711E1"/>
-                            <stop offset="1" stop-color="#7F52FF"/>
-                        </radialGradient>
-                    </defs>
-                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kg-slide)"/>
+                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kotlin-gradient)"/>
                 </svg>
                 Scope functions
             </h2>
@@ -880,15 +780,7 @@ val resultat = lagre(beregnet)</code></pre>
             <span class="section-badge">Det som trenger modning</span>
             <h2>
                 <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <radialGradient id="kg-slide" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
-                                        gradientTransform="translate(48 0) rotate(180) scale(48)">
-                            <stop stop-color="#E44857"/>
-                            <stop offset="0.504494" stop-color="#C711E1"/>
-                            <stop offset="1" stop-color="#7F52FF"/>
-                        </radialGradient>
-                    </defs>
-                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kg-slide)"/>
+                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kotlin-gradient)"/>
                 </svg>
                 Coroutines
             </h2>
@@ -914,15 +806,7 @@ Thread.startVirtualThread(() -> {
             <span class="section-badge">I det daglige</span>
             <h2>
                 <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <radialGradient id="kg-slide" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
-                                        gradientTransform="translate(48 0) rotate(180) scale(48)">
-                            <stop stop-color="#E44857"/>
-                            <stop offset="0.504494" stop-color="#C711E1"/>
-                            <stop offset="1" stop-color="#7F52FF"/>
-                        </radialGradient>
-                    </defs>
-                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kg-slide)"/>
+                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kotlin-gradient)"/>
                 </svg>
                 Spring + Kotlin
             </h2>
@@ -957,7 +841,7 @@ Thread.startVirtualThread(() -> {
             <span class="section-badge">Java Strikes Back</span>
             <h2 class="strikes-back-title">
                 <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 300 550" xmlns="http://www.w3.org/2000/svg"
-                     style="width:28px;height:51px; vertical-align: middle; margin-right: 0.3em;">
+                     style="width:35px;height:64px; vertical-align: middle; margin-right: 0.3em;">
                     <path style="fill:#5382A1;"
                           d="M102.681,291.324c0,0-14.178,8.245,10.09,11.035c29.4,3.354,44.426,2.873,76.825-3.259c0,0,8.518,5.341,20.414,9.967C137.38,340.195,45.634,307.264,102.681,291.324"/>
                     <path style="fill:#5382A1;"
@@ -996,7 +880,7 @@ Thread.startVirtualThread(() -> {
             <span class="section-badge">Java Strikes Back</span>
             <h2 class="strikes-back-title">
                 <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 300 550" xmlns="http://www.w3.org/2000/svg"
-                     style="width:28px;height:51px; vertical-align: middle; margin-right: 0.3em;">
+                     style="width:35px;height:64px; vertical-align: middle; margin-right: 0.3em;">
                     <path style="fill:#5382A1;"
                           d="M102.681,291.324c0,0-14.178,8.245,10.09,11.035c29.4,3.354,44.426,2.873,76.825-3.259c0,0,8.518,5.341,20.414,9.967C137.38,340.195,45.634,307.264,102.681,291.324"/>
                     <path style="fill:#5382A1;"
@@ -1037,7 +921,7 @@ Thread.startVirtualThread(() -> {
             <span class="section-badge">Java Strikes Back</span>
             <h2 class="strikes-back-title">
                 <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 300 550" xmlns="http://www.w3.org/2000/svg"
-                     style="width:28px;height:51px; vertical-align: middle; margin-right: 0.3em;">
+                     style="width:35px;height:64px; vertical-align: middle; margin-right: 0.3em;">
                     <path style="fill:#5382A1;"
                           d="M102.681,291.324c0,0-14.178,8.245,10.09,11.035c29.4,3.354,44.426,2.873,76.825-3.259c0,0,8.518,5.341,20.414,9.967C137.38,340.195,45.634,307.264,102.681,291.324"/>
                     <path style="fill:#5382A1;"
@@ -1103,15 +987,7 @@ Thread.startVirtualThread(() -> {
             <span class="section-badge">Reisebrevet avsluttes</span>
             <h2>
                 <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <radialGradient id="kg-slide" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
-                                        gradientTransform="translate(48 0) rotate(180) scale(48)">
-                            <stop stop-color="#E44857"/>
-                            <stop offset="0.504494" stop-color="#C711E1"/>
-                            <stop offset="1" stop-color="#7F52FF"/>
-                        </radialGradient>
-                    </defs>
-                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kg-slide)"/>
+                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kotlin-gradient)"/>
                 </svg>
                 Hva sitter jeg igjen med?
             </h2>
@@ -1130,15 +1006,7 @@ Thread.startVirtualThread(() -> {
             <span class="section-badge">Referanser</span>
             <h2>
                 <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <radialGradient id="kg-slide" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
-                                        gradientTransform="translate(48 0) rotate(180) scale(48)">
-                            <stop stop-color="#E44857"/>
-                            <stop offset="0.504494" stop-color="#C711E1"/>
-                            <stop offset="1" stop-color="#7F52FF"/>
-                        </radialGradient>
-                    </defs>
-                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kg-slide)"/>
+                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kotlin-gradient)"/>
                 </svg>
                 Kilder
             </h2>

@@ -2,9 +2,9 @@
 
 ## Om presentasjonen
 - **Varighet:** 15–20 minutter
-- **Målgruppe:** Kolleger i Brønnøysundregistrene, junior til senior
+- **Målgruppe:** Kolleger i BR, junior til senior
 - **Tone:** Balansert, personlig — ingen agenda, ingen dom. Espen sin stemme, ikke AI-stemme.
-- **Foredragsholder:** Espen Ønvik Pedersen — Java siden tidlig 2000-tall, 6 måneder fullt med Kotlin på Team Våpen (Våpenregisteret), innleid konsulent i Brønnøysundregistrene
+- **Foredragsholder:** Espen Ønvik Pedersen — Java siden tidlig 2000-tall, 6 måneder fullt med Kotlin, innleid konsulent i BR
 
 ---
 
@@ -15,7 +15,7 @@
 - **Tema:** Kotlin-inspirert (lilla `#7F52FF`, mørk blå bakgrunn `#1A1A2E`) — byttes med én linje i `<link id="theme">`
 - **Font:** JetBrains Mono gjennomgående
 - **Kodeeksempler:** Java vises først, Kotlin fader inn som fragment — aldri side-om-side
-- **Per-slide logo:** Kotlin K-logo inline i h2 på alle slides, Java-logo på Java Strikes Back-slides
+- **Per-slide logo:** Kotlin K-logo inline i h2 på alle slides (28x28px), Java-logo på Java Strikes Back-slides (35x64px)
 - **Duke (Java-maskot):** SVG absolutt posisjonert på "Kort om meg"-sliden
 - **Auto-animate:** Kotlin-logoen morfes fra stor (tittelslide) til liten (Kort om meg)
 - **Java Strikes Back:** `data-background-color="#1A0800"`, zoom-transition inn, oransje gradient-titler (`strikes-back-title`)
@@ -29,7 +29,6 @@
 - Kotlin K-logo (offisiell SVG med radiell gradient)
 - Tittel: "Bekjentskap med Kotlin"
 - Undertittel: "— en Javaveterans reisebrev"
-- Meta: Espen Ønvik Pedersen · Backend-utvikler · 6 måneder 100% Kotlin på Team Våpen · Brønnøysundregistrene 2026
 - `data-auto-animate` — logoen morfes til neste slide
 
 ### 2. Kort om meg
@@ -106,9 +105,10 @@
 - `data-transition="zoom"`, `data-background-color="#1A0800"`
 - Tags: Records, Sealed classes, Pattern matching, Virtual Threads, Value Classes preview, null-aware typer
 
-### 18. Det Java har levert (slide A — Records + Sealed)
+### 18. Det Java har levert (slide A — Records + Sealed + Pattern Matching)
 - Records (Java 16) og Sealed classes (Java 17)
-- Blockquote: Kotlin hadde begge fra starten
+- Pattern Matching (Java 16+) — eksempel med instanceof casting
+- Blockquote: Kotlin hadde disse fra starten. Java fikk dem i 2016 og 2021.
 
 ### 19. Det Java har levert (slide B — Switch + Virtual Threads)
 - Switch expressions (Java 21) med note: Kotlin hadde dette fra 2016
@@ -128,6 +128,7 @@
 
 ### 23. Takk / Spørsmål
 - Kotlin-logo, "Takk!", åpent for spørsmål
+- Link til Kotlin Playground: "Prøv ut Kotlin: play.kotlinlang.org"
 
 ---
 
@@ -185,8 +186,8 @@
 ```
 
 ### Klasser
-- `.section-badge` — seksjonsindikator øverst på slides
-- `.slide-logo` — inline logo i h2 (28x28px, vertical-align: middle)
+- `.section-badge` — seksjonsindikator øverst på slides (display: block, margin: 0 auto, text-align: center)
+- `.slide-logo` — inline logo i h2 (28x28px Kotlin, 35x64px Java, vertical-align: middle)
 - `.strikes-back-title` — oransje gradient h2 på Java Strikes Back
 - `.stat-grid` — 3-kolonne grid for statistikk-kort
 - `.stat-card` / `.stat-number` / `.stat-label` — statistikk-kort
@@ -194,6 +195,17 @@
 - `.check-list` / `.warn-list` — lister med ✓ og ⚠ prefiks
 - `.code-label.java` / `.code-label.kotlin` — label over kodeblokker
 - `.source-note` — liten kildetekst under slides
+
+### Sentering og alignment
+- Alle h2-elementer har `text-align: center` for konsistent sentering
+- Section badges er sentrert med `display: block` + `margin: 0 auto` + `width: fit-content`
+- Java Strikes Back slides bruker inline logoer i stedet for absolutt posisjonering for å bevare sentering
+
+### SVG og logoer
+- **Kotlin-logoer:** Bruker global `kotlin-gradient` definisjon for å unngå duplikat SVG-kode
+- **Java-logoer:** Økt størrelse fra 28x51px til 35x64px for bedre synlighet
+- **Gradient-optimalisering:** Fjernet 18 duplikate gradient-definisjoner, nå kun én global definisjon
+- **Logo-synlighet:** Løst problem hvor bare første Kotlin-logo var synlig pga. dupliserte gradient-IDer
 
 ### Fragmenter
 - `fragment fade-up` — brukes på kulelister i intro og konklusjon
@@ -203,8 +215,9 @@
 ### Java Strikes Back
 - `data-background-color="#1A0800"` på alle fire slides
 - `data-transition="zoom"` kun på intro-sliden (slide 16)
-- Java SVG-logo (viewBox 0 0 300 550) inni h2 på slides 17-20
+- Java SVG-logo (viewBox 0 0 300 550, 35x64px) inline i h2 på slides 17-20
 - Alle h2 har klassen `strikes-back-title`
+- Logoer bruker `vertical-align: middle` i stedet for absolutt posisjonering
 
 ### Auto-animate
 - Slide 1 og 2 har `data-auto-animate`
@@ -220,3 +233,23 @@ transitionSpeed: 'fast'
 backgroundTransition: 'fade'
 width: 1280, height: 720, margin: 0.06
 ```
+
+---
+
+## Siste forbedringer og tekniske løsninger
+
+### Logo-synlighet og SVG-optimalisering
+- **Problem:** Kotlin-logoer var ikke synlige på flere slides pga. duplikate gradient-IDer
+- **Løsning:** Global SVG-definisjon med `kotlin-gradient` ID, fjernet alle duplikater
+- **Resultat:** Alle 19 Kotlin-logoer er nå synlige på alle slides
+
+### Java-logo forbedring
+- **Størrelse økt:** Fra 28x51px til 35x64px (25% større for bedre synlighet)
+- **Beholdt alignment:** Inline posisjonering med `vertical-align: middle` bevart
+- **Konsistent styling:** Samme margin og styling som Kotlin-logoer
+
+### Presentasjonsstatus
+- **Totalt slides:** 24 slides fullstendig implementert
+- **Logo-implementering:** 22 slides med logoer (Kotlin: 19, Java: 3)
+- **Alignment:** Alle section badges og h2-elementer konsistent sentrert
+- **Kvalitetssikret:** Testet alle slides for synlighet og alignment
