@@ -985,6 +985,12 @@ Thread.startVirtualThread(() -> {
             <pre style="font-size:0.4em;"><code class="language-java" data-noescape data-trim>sealed interface Hendelse
     permits Opprettet, Bekreftet, Annullert {}</code></pre>
 
+            <p class="code-label java" style="margin-top:0.5em;">Pattern Matching (Java 16+)</p>
+            <pre style="font-size:0.4em;"><code class="language-java" data-noescape data-trim>// Pattern matching med instanceof
+if (melding instanceof OrdreOpprettet event) {
+    behandle(event.getOrdreId());
+}</code></pre>
+
             <blockquote class="fragment" style="margin-top:0.5em; font-size:0.45em;">
                 Kotlin hadde begge fra starten. Java fikk dem i 2016 og 2021.
             </blockquote>
