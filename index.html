@@ -6,9 +6,7 @@
     <title>Bekjentskap med Kotlin — et reisebrev</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css"/>
-    <!-- TEMA: Bytt én linje her for å skifte tema -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/theme/night.min.css"
-          id="theme"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/theme/night.min.css" id="theme"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/plugin/highlight/monokai.css"/>
 
     <style>
@@ -58,6 +56,7 @@
             border-bottom: 2px solid var(--accent-line);
             padding-bottom: 0.2em;
             margin-bottom: 0.5em;
+            text-align: center;
         }
 
         .reveal h3 {
@@ -66,7 +65,7 @@
         }
 
         .section-badge {
-            display: inline-block;
+            display: block;
             background: rgba(127, 82, 255, 0.15);
             border: 1px solid var(--kotlin-purple);
             border-radius: 4px;
@@ -75,8 +74,9 @@
             color: var(--kotlin-purple);
             letter-spacing: 0.1em;
             text-transform: uppercase;
-            margin-bottom: 0.3em;
-            vertical-align: middle;
+            margin: 0 auto 0.3em auto;
+            text-align: center;
+            width: fit-content;
         }
 
         .reveal pre {
@@ -358,7 +358,7 @@
                 </defs>
                 <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kg)"/>
             </svg>
-            <p class="title-eyebrow">Brønnøysundregistrene · 2026</p>
+            <p class="title-eyebrow">For Brønnøysundregistrene 2026</p>
             <h1 data-id="main-title">Bekjentskap med Kotlin</h1>
             <p class="title-subtitle">— en Javaveterans reisebrev</p>
             <p class="title-meta">
@@ -425,7 +425,7 @@
         </section>
 
         <!-- ═══════════════════════════════════
-             SEKSJON 2: STATISTIKK
+             SEKSJON 2: FAKTA
              ═══════════════════════════════════ -->
 
         <!-- Slide 2b: Hvorfor Kotlin oppsto -->
@@ -460,7 +460,7 @@
             </ul>
         </section>
 
-        <!-- Slide 3: Statistikk -->
+        <!-- Slide 3: Fakta -->
         <section>
             <span class="section-badge">Fakta</span>
             <h2>
@@ -522,10 +522,10 @@
         </section>
 
         <!-- ═══════════════════════════════════
-             SEKSJON 3: DET GODE
+             SEKSJON 3: DET SOM SATTE SEG
              ═══════════════════════════════════ -->
 
-        <!-- Slide 4: Oversikt det gode -->
+        <!-- Slide 4: Det som satte seg -->
         <section>
             <span class="section-badge">Det som satte seg</span>
             <h2>
@@ -909,10 +909,6 @@ Thread.startVirtualThread(() -> {
             </blockquote>
         </section>
 
-        <!-- ═══════════════════════════════════
-             SEKSJON 5: SPRING + JOOQ
-             ═══════════════════════════════════ -->
-
         <!-- Slide 15: Spring + Kotlin -->
         <section>
             <span class="section-badge">I det daglige</span>
@@ -959,9 +955,9 @@ Thread.startVirtualThread(() -> {
         <!-- Slide 17a: Records + Sealed -->
         <section data-background-color="#1A0800">
             <span class="section-badge">Java Strikes Back</span>
-            <h2 class="strikes-back-title" style="position:relative;">
+            <h2 class="strikes-back-title">
                 <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 300 550" xmlns="http://www.w3.org/2000/svg"
-                     style="position:absolute; left:0px; top:50%; transform:translateY(-50%); width:82px;height:143px;">
+                     style="width:28px;height:51px; vertical-align: middle; margin-right: 0.3em;">
                     <path style="fill:#5382A1;"
                           d="M102.681,291.324c0,0-14.178,8.245,10.09,11.035c29.4,3.354,44.426,2.873,76.825-3.259c0,0,8.518,5.341,20.414,9.967C137.38,340.195,45.634,307.264,102.681,291.324"/>
                     <path style="fill:#5382A1;"
@@ -998,9 +994,9 @@ Thread.startVirtualThread(() -> {
         <!-- Slide 17b: Switch + Virtual Threads -->
         <section data-background-color="#1A0800">
             <span class="section-badge">Java Strikes Back</span>
-            <h2 class="strikes-back-title" style="position:relative;">
+            <h2 class="strikes-back-title">
                 <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 300 550" xmlns="http://www.w3.org/2000/svg"
-                     style="position:absolute; left:0px; top:50%; transform:translateY(-50%); width:82px;height:143px;">
+                     style="width:28px;height:51px; vertical-align: middle; margin-right: 0.3em;">
                     <path style="fill:#5382A1;"
                           d="M102.681,291.324c0,0-14.178,8.245,10.09,11.035c29.4,3.354,44.426,2.873,76.825-3.259c0,0,8.518,5.341,20.414,9.967C137.38,340.195,45.634,307.264,102.681,291.324"/>
                     <path style="fill:#5382A1;"
@@ -1036,12 +1032,12 @@ Thread.startVirtualThread(() -> {
             </blockquote>
         </section>
 
-        <!-- Slide 18: Krystallkula -->
+        <!-- Slide 18: Det som er levert -->
         <section data-background-color="#1A0800">
             <span class="section-badge">Java Strikes Back</span>
-            <h2 class="strikes-back-title" style="position:relative;">
+            <h2 class="strikes-back-title">
                 <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 300 550" xmlns="http://www.w3.org/2000/svg"
-                     style="position:absolute; left:0px; top:50%; transform:translateY(-50%); width:82px;height:143px;">
+                     style="width:28px;height:51px; vertical-align: middle; margin-right: 0.3em;">
                     <path style="fill:#5382A1;"
                           d="M102.681,291.324c0,0-14.178,8.245,10.09,11.035c29.4,3.354,44.426,2.873,76.825-3.259c0,0,8.518,5.341,20.414,9.967C137.38,340.195,45.634,307.264,102.681,291.324"/>
                     <path style="fill:#5382A1;"
@@ -1223,10 +1219,7 @@ Thread.startVirtualThread(() -> {
             </p>
             <p class="title-meta">
                 Espen Ønvik Pedersen<br/>
-                Brønnøysundregistrene · 2026
-            </p>
-            <p style="font-size:0.4em; color:var(--text-muted); margin-top:1.8em; font-style:italic;">
-                NullPointerException — din følgesvenn siden 1995 😐
+                For Brønnøysundregistrene 2026
             </p>
         </section>
 
