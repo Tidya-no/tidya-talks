@@ -364,10 +364,6 @@
             <p class="title-meta">
                 <br>Av Espen Ønvik Pedersen<br/>
             </p>
-            <aside class="notes">
-                Velkommen. Jeg er Espen — lang fartstid i Java, og for et drøyt halvår siden fikk jeg Kotlin i fanget.
-                Dette er ikke et salgsforedrag. Ingen agenda, ingen dom. Bare et reisebrev fra én som har vært der.
-            </aside>
         </section>
 
         <!-- Slide 2: Bakgrunn -->
@@ -421,15 +417,11 @@
             </div>
             <ul style="margin-top:0.4em;">
                 <li class="fragment fade-up">Espen Ønvik Pedersen</li>
-                <li class="fragment fade-up">Innleid konsulent på tredje året i BR</li>
+                <li class="fragment fade-up">Innleid konsulent hos BR på tredje året</li>
                 <li class="fragment fade-up">To år på Team Reelle og et halvt år på Team Våpen</li>
                 <li class="fragment fade-up">Første erfaring med Java: tidlig 2000-tall</li>
                 <li class="fragment fade-up">Har jobbet fullt med Kotlin siste 6 måneder</li>
             </ul>
-            <aside class="notes">
-                Lang erfaring med Java. Fikk Kotlin i et backend-prosjekt — Spring Boot + jOOQ.
-                Ingen valgte det for meg — det var der fra dag én.
-            </aside>
         </section>
 
         <!-- ═══════════════════════════════════
@@ -466,16 +458,11 @@
                     <strong>2017</strong> 🚀
                 </li>
             </ul>
-            <aside class="notes">
-                JetBrains startet utviklingen rundt 2010.
-                Målet var et språk de selv ville bruke i IntelliJ og andre produkter.
-                Google-kunngjøringen i 2017 var det som virkelig satte fart på adopsjonen.
-            </aside>
         </section>
 
         <!-- Slide 3: Statistikk -->
         <section>
-            <span class="section-badge">Statistikk</span>
+            <span class="section-badge">Fakta</span>
             <h2>
                 <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
                     <defs>
@@ -493,14 +480,14 @@
             <div class="stat-grid">
                 <div class="stat-card fragment">
                     <span class="stat-number">51%</span>
-                    <span class="stat-label">Av Kotlin-utviklere ønsker å fortsette å bruke språket<br/><span
+                    <span class="stat-label">av Kotlin-utviklere ønsker å fortsette å bruke språket<br/><span
                             style="color:var(--text-muted)">(Java: 41,8%)</span><br/><a
                             href="https://survey.stackoverflow.co/2025/technology" target="_blank"
                             style="color:var(--kotlin-teal);font-size:0.85em;">Stack Overflow dev survey 2025</a></span>
                 </div>
                 <div class="stat-card fragment">
                     <span class="stat-number">10,8%</span>
-                    <span class="stat-label">Av alle utviklere bruker Kotlin aktivt<br/><span
+                    <span class="stat-label">av alle utviklere bruker Kotlin aktivt<br/><span
                             style="color:var(--text-muted)">(Java: 29,4%)</span><br/><a
                             href="https://survey.stackoverflow.co/2025/technology" target="_blank"
                             style="color:var(--kotlin-teal);font-size:0.85em;">Stack Overflow dev survey 2025</a></span>
@@ -527,18 +514,11 @@
                 </div>
                 <div class="stat-card fragment">
                     <span class="stat-number">🤝</span>
-                    <span class="stat-label">Spring og JetBrains har formalisert samarbeidet om Kotlin som førsteklasses språk i Spring<br/><a
+                    <span class="stat-label">Spring og JetBrains har formalisert et samarbeid om Kotlin som førsteklasses språk i Spring<br/><a
                             href="https://blog.jetbrains.com/kotlin/2025/05/strategic-partnership-with-spring/"
                             target="_blank" style="color:var(--kotlin-teal); font-size:0.85em;">JetBrains blogg 2025</a></span>
                 </div>
             </div>
-            <aside class="notes">
-                SO 2025: Kotlin 51% admired vs Java 41,8% — Kotlin slår Java på tilfredshet.
-                Kotlin brukt av 10,8% vs Java 29,4% — ikke dominant i tall, men vokser stabilt.
-                JetBrains 2025: 18% reell bruk, jevn vekst siden 2017.
-                2,5 millioner Kotlin-utviklere globalt (KotlinConf 2025).
-                Spring Boot (~90% av backend-markedet) formaliserte partnerskap med JetBrains i 2025.
-            </aside>
         </section>
 
         <!-- ═══════════════════════════════════
@@ -575,7 +555,6 @@
                 <span class="tag">Trailing lambdas</span>
                 <span class="tag">Extension functions</span>
             </div>
-            <aside class="notes">Kjerneseksjonen. Noen store, noen småting som merkes i hverdagen.</aside>
         </section>
 
         <!-- Slide 5: Null-safety -->
@@ -605,10 +584,6 @@ val store = navn?.uppercase() ?: "UKJENT" // ?: Elvis operator: fallback-verdi</
             <blockquote class="fragment">
                 Du velger bevisst å håndtere null — ikke glemme det
             </blockquote>
-            <aside class="notes">
-                Null er en del av typesystemet. String vs String? er to forskjellige typer.
-                !! finnes, men er et valg du tar bevisst — ikke en default.
-            </aside>
         </section>
 
         <!-- Slide 6: val/var + data class + copy() -->
@@ -642,10 +617,6 @@ val sendt = ordre.copy(status = Status.SENDT) // slik gjør man det</code></pre>
             <blockquote class="fragment">
                 data class sin copy(): kopierer alt og lar deg overstyre det du trenger
             </blockquote>
-            <aside class="notes">
-                val er read-only. var er muterbar. Du velger aktivt.
-                data class gir equals, hashCode, toString og copy() gratis.
-            </aside>
         </section>
 
         <!-- Slide 7: Smart casts -->
@@ -677,10 +648,6 @@ val sendt = ordre.copy(status = Status.SENDT) // slik gjør man det</code></pre>
             <blockquote class="fragment">
                 "Java-folk kjenner seg kanskje igjen i den manuelle cast-smerten.
             </blockquote>
-            <aside class="notes">
-                Etter is-sjekk vet kompilatoren typen. Ingen redundant cast.
-                Fungerer også i when-uttrykk.
-            </aside>
         </section>
 
         <!-- Slide 9a: String templates -->
@@ -708,9 +675,6 @@ val sendt = ordre.copy(status = Status.SENDT) // slik gjør man det</code></pre>
             <blockquote class="fragment" style="margin-top:0.6em;">
                 Ingen StringBuilder. Ingen String.format. Mer lesbar kode.
             </blockquote>
-            <aside class="notes">
-                $ for enkle variabler, ${} for uttrykk.
-            </aside>
         </section>
 
         <!-- Slide 9b: Default params + named arguments -->
@@ -746,10 +710,6 @@ opprett("Espen", aktiv = false) // named arguments</code></pre>
                 ⚠ Java har ingen plan for default parameters eller named arguments — Kotlin har fortsatt et klart
                 forsprang her.
             </p>
-            <aside class="notes">
-                Default params: eliminerer overload-pyramider.
-                Named arguments: kallsteder blir selvdokumenterende.
-            </aside>
         </section>
 
         <!-- Slide 10: Top-level functions -->
@@ -779,11 +739,6 @@ opprett("Espen", aktiv = false) // named arguments</code></pre>
             <blockquote class="fragment">
                 I Kotlin er funksjoner førsteklasses borgere, som ikke må eksistere i en klasse
             </blockquote>
-            <aside class="notes">
-                Java tvinger alt inn i klasser — selv stateless utilities.
-                Kotlin: top-level functions er førsteklasses borgere.
-                Companion object erstatter static factory methods.
-            </aside>
         </section>
 
         <!-- Slide 11a: Trailing lambdas -->
@@ -815,11 +770,6 @@ opprett("Espen", aktiv = false) // named arguments</code></pre>
                 Andre gang: okei, okei..<br/>
                 Tredje gang: of course!"
             </blockquote>
-            <aside class="notes">
-                Trailing lambdas: hvis siste parameter er en lambda kan den flyttes utenfor parentesene.
-                it er Kotlins implisitte parameter-navn for lambdaer med én parameter.
-                Forklarer mye av Spring DSL og jOOQ Kotlin-API-et.
-            </aside>
         </section>
 
         <!-- Slide 11b: Extension functions -->
@@ -854,11 +804,6 @@ OrgNrUtils.erGyldig("974760843"); // true</code></pre>
             <blockquote class="fragment">
                 Extension functions finnes ikke i Java, og er heller ikke planlagt.
             </blockquote>
-            <aside class="notes">
-                Extension functions er syntaktisk sukker — kompilerer til statiske metoder under panseret.
-                Finnes ikke i Java og er ikke på noen roadmap.
-                Ser potensial, bruker det litt — ikke full beherskelse ennå.
-            </aside>
         </section>
 
         <!-- Slide 12: when + sealed classes -->
@@ -879,24 +824,19 @@ OrgNrUtils.erGyldig("974760843"); // true</code></pre>
                 when + sealed classes
             </h2>
             <p class="code-label kotlin">Kotlin</p>
-            <pre><code class="language-kotlin" data-noescape data-trim>sealed interface Hendelse {
-    data class Opprettet(val id: UUID) : Hendelse
-    object Annullert : Hendelse
-}
+            <pre><code class="language-kotlin" data-noescape data-trim>sealed interface Status
+object Aktiv : Status
+object Inaktiv : Status
 
-val tekst = when (hendelse) {
-    is Hendelse.Opprettet -> "Opprettet ${hendelse.id}"
-    is Hendelse.Annullert -> "Annullert"
-    // Glemmer du en? -> Kompileringsfeil!
+val tekst = when (status) {
+    is Aktiv   -> "Aktiv"
+    is Inaktiv -> "Inaktiv"
+    // Glemmer du en? Kompileringsfeil!
+}
 }</code></pre>
             <blockquote class="fragment">
                 Ny hendelsestype gir kompileringsfeil alle steder den ikke håndteres
             </blockquote>
-            <aside class="notes">
-                sealed interface: kompilatoren kjenner alle mulige subtyper.
-                when + sealed = exhaustiveness — ingen runtime-overraskelser.
-                Java fikk sealed classes i Java 17, men Kotlin hadde det fra starten.
-            </aside>
         </section>
 
         <!-- ═══════════════════════════════════
@@ -934,10 +874,6 @@ val resultat = lagre(beregnet)</code></pre>
             <blockquote class="fragment" style="margin-top:0.6em;">
                 Gjør det samme — men er det mer lesbart? 🤔
             </blockquote>
-            <aside class="notes">
-                Scope functions: let, apply, run, also, with — subtile forskjeller mellom this og it.
-                Ikke alltid mer lesbart enn vanlig imperativ kode.
-            </aside>
         </section>
 
         <!-- Slide 14: Coroutines -->
@@ -972,11 +908,6 @@ Thread.startVirtualThread(() -> {
             <blockquote class="fragment" style="margin-top:0.6em;">
                 Samme resultat. Ingen nye konsepter å lære.
             </blockquote>
-            <aside class="notes">
-                Coroutines: stort konsept med egen mental modell.
-                Virtual Threads (Java 21): løser mye av det samme uten å lære nye paradigmer.
-                Begge har sine styrker og svakheter.
-            </aside>
         </section>
 
         <!-- ═══════════════════════════════════
@@ -1005,11 +936,6 @@ Thread.startVirtualThread(() -> {
                 <li class="fragment fade-up">Spring Boot 4 setter Kotlin 2.2 som minimum baseline — og planlegger å følge nye Kotlin-versjoner release for release <a href="https://spring.io/blog/2025/12/18/next-level-kotlin-support-in-spring-boot-4" target="_blank" style="font-size:0.7em; color:var(--text-muted); text-decoration:none;">(Spring Blog)</a></li>
                 <li class="fragment fade-up">JetBrains og Spring inngikk strategisk partnerskap i 2025 — mål: gjøre Spring Boot 4 det beste rammeverket for Kotlin-backend <a href="https://blog.jetbrains.com/kotlin/2025/05/strategic-partnership-with-spring" target="_blank" style="font-size:0.7em; color:var(--text-muted); text-decoration:none;">(JetBrains Blog)</a></li>
             </ul>
-            <aside class="notes">
-                Spring har gått fra å støtte Kotlin til å aktivt satse på det.
-                Strategisk partnerskap sikrer at Kotlin får samme prioritet som Java.
-                kotlin-spring plugin løser final-klasse problematikk automatisk.
-            </aside>
         </section>
 
         <!-- ═══════════════════════════════════
@@ -1029,7 +955,6 @@ Thread.startVirtualThread(() -> {
                 <span class="tag java fragment">Value Classes — preview (JDK 26)</span>
                 <span class="tag java fragment">Null-aware typer — under arbeid</span>
             </div>
-            <aside class="notes">Java er ikke stille. La oss se på hva som faktisk har skjedd.</aside>
         </section>
 
         <!-- Slide 17a: Records + Sealed -->
@@ -1064,10 +989,6 @@ Thread.startVirtualThread(() -> {
             <blockquote class="fragment" style="margin-top:0.5em; font-size:0.45em;">
                 Kotlin hadde begge fra starten. Java fikk dem i 2016 og 2021.
             </blockquote>
-            <aside class="notes">
-                Records vs data classes vs Lombok — Java trenger ikke Lombok lenger.
-                Sealed classes identisk konsept som Kotlin.
-            </aside>
         </section>
 
         <!-- Slide 17b: Switch + Virtual Threads -->
@@ -1096,7 +1017,7 @@ Thread.startVirtualThread(() -> {
             <pre style="font-size:0.38em;"><code class="language-java" data-noescape data-trim>String tekst = switch (status) {
     case MOTTATT -> "Mottatt";
     case SENDT   -> "Sendt";
-}; // exhaustive med sealed</code></pre>
+}; // Glemmer du en? -> Kompileringsfeil!</code></pre>
             <blockquote class="fragment" style="margin-top:0.3em; font-size:0.42em;">
                 Kotlin hadde dette fra 2016. Java fikk det i 2021.
             </blockquote>
@@ -1110,10 +1031,6 @@ Thread.startVirtualThread(() -> {
                 Project Loom — fullført 2024
             </blockquote>
             <p class="source-note">Project Loom fullført 2024 · Project Amber levert</p>
-            <aside class="notes">
-                Switch expressions + pattern matching: nærmer seg Kotlin when.
-                Virtual Threads (Project Loom, fullført 2024) vs Coroutines.
-            </aside>
         </section>
 
         <!-- Slide 18: Krystallkula -->
@@ -1176,12 +1093,6 @@ Thread.startVirtualThread(() -> {
             <blockquote class="fragment" style="font-size:0.45em; margin-top:0.4em;">
                 Java lukker gapet — det skjer release for release. Men Kotlin var der først.
             </blockquote>
-            <aside class="notes">
-                Value Classes JEP 401: early-access preview JDK 26. List av int uten boxing.
-                Valhalla utforsker null-kontrollerte typer.
-                Project Amber: Records, sealed, pattern matching er levert.
-                Konklusjon: Java lukker gapet — men Kotlin var der først.
-            </aside>
         </section>
 
         <!-- ═══════════════════════════════════
@@ -1207,16 +1118,12 @@ Thread.startVirtualThread(() -> {
             </h2>
             <ul>
                 <li class="fragment fade-up">Kotlin er et gjennomtenkt språk</li>
-                <li class="fragment fade-up">Det har vært med oss lenge nå — ikke hype?</li>
+                <li class="fragment fade-up">Det har vært med oss lenge nå — ikke hype</li>
                 <li class="fragment fade-up">Mengde kode går ned og språket er elegant</li>
                 <li class="fragment fade-up">Tvinger frem null-safety og immutability - har mye syntaktisk sukker</li>
                 <li class="fragment fade-up">Spring + Kotlin fungerer meget bra — lite friksjon i hverdagen</li>
                 <li class="fragment fade-up">Java henter inn — men Kotlin var der først, og er der nå</li>
             </ul>
-            <aside class="notes">
-                Ingen fasit. Ingen dom.
-                Begge språk er kapable. Valget handler om kontekst, team og hva du vil optimalisere for.
-            </aside>
         </section>
 
         <!-- Slide 20: Referanser -->
@@ -1291,7 +1198,6 @@ Thread.startVirtualThread(() -> {
                 </tr>
                 </tbody>
             </table>
-            <aside class="notes">Alle tall i presentasjonen er hentet fra disse kildene.</aside>
         </section>
 
         <!-- Slide 21: Takk / Spørsmål -->
@@ -1316,8 +1222,6 @@ Thread.startVirtualThread(() -> {
             <p style="font-size:0.4em; color:var(--text-muted); margin-top:1.8em; font-style:italic;">
                 NullPointerException — din følgesvenn siden 1995 😐
             </p>
-            <aside class="notes">Åpent for spørsmål. Gjerne erfaringsutveksling — de fleste her har Java-bakgrunn.
-            </aside>
         </section>
 
     </div>
