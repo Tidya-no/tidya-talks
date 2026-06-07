@@ -641,8 +641,8 @@ val sendt = ordre.copy(status = Status.SENDT) // slik gjør man det</code></pre>
                 Smart casts
             </h2>
             <p class="code-label java">Java 16+</p>
-            <pre><code class="language-java" data-noescape data-trim>if (melding instanceof OrdreOpprettet event) {
-    behandle(event.getOrdreId());
+            <pre><code class="language-java" data-noescape data-trim>if (melding instanceof OrdreOpprettet ordreOpprettet) {
+    behandle(ordreOpprettet.getOrdreId());
 }</code></pre>
             <blockquote class="fragment">
                 Den manuelle cast-smerten i Java ble bedre med pattern matching i Java 16.
