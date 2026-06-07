@@ -797,7 +797,7 @@ opprett("Espen", aktiv = false) // named arguments</code></pre>
     }
 }
 
-StringUtils.countWords("Kotlin er gøy"); // 3</code></pre>
+StringUtils.countWords("Java er gøy"); // 3</code></pre>
             <p class="code-label kotlin" style="margin-top:0.5em;">Kotlin — extension function</p>
             <pre class="fragment" style="font-size:0.4em;"><code class="language-kotlin" data-noescape data-trim>fun String.countWords() = trim().split("\\s+".toRegex()).size
 
@@ -990,15 +990,10 @@ suspend fun hentOrdre(id: UUID): Ordre =
             <pre style="font-size:0.4em;"><code class="language-java" data-noescape data-trim>sealed interface Hendelse
     permits Opprettet, Bekreftet, Annullert {}</code></pre>
 
-            <p class="code-label java" style="margin-top:0.5em;">Pattern Matching (Java 16 - 21) - eksempel med
-                casting</p>
-            <pre style="font-size:0.4em;"><code class="language-java" data-noescape data-trim>if (melding instanceof OrdreOpprettet event) {
-    behandle(event.getOrdreId());
+            <p class="code-label java" style="margin-top:0.5em;">Pattern Matching (Java 16 - 21) - Switch expressions, guarded og deconstruction patterns</p>
+            <pre style="font-size:0.4em;"><code class="language-java" data-noescape data-trim>if (melding instanceof OrdreOpprettet ordre) {
+    behandle(ordre.getOrdreId());
 }</code></pre>
-
-            <blockquote class="fragment" style="margin-top:0.5em; font-size:0.45em;">
-                Kotlin hadde tilsvarende allerede fra start.
-            </blockquote>
         </section>
 
         <!-- Slide 17b: Switch + Virtual Threads -->
@@ -1028,17 +1023,10 @@ suspend fun hentOrdre(id: UUID): Ordre =
     case MOTTATT -> "Mottatt";
     case SENDT   -> "Sendt";
 }; // Glemmer du en? -> Kompileringsfeil!</code></pre>
-            <blockquote class="fragment" style="margin-top:0.3em; font-size:0.42em;">
-                Kotlin hadde dette fra 2016. Java fikk det i 2021.
-            </blockquote>
-
             <p class="code-label java" style="margin-top:0.4em;">Virtual Threads — Project Loom (Java 21)</p>
             <pre style="font-size:0.38em;"><code class="language-java" data-noescape data-trim>try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
     return executor.submit(() -> kallEksternApi(id)).get();
 }</code></pre>
-            <blockquote class="fragment" style="margin-top:0.3em; font-size:0.42em;">
-                Kotlin hadde couroutines fra 2016. Java fikk virtual threads i 2024
-            </blockquote>
         </section>
 
         <!-- Slide 18: Det som er levert -->
