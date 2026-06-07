@@ -1019,7 +1019,9 @@ suspend fun hentOrdre(id: UUID): Ordre =
             </h2>
 
             <p class="code-label java" style="margin-top:0.3em;">Switch expressions (Java 21)</p>
-            <pre style="font-size:0.38em;"><code class="language-java" data-noescape data-trim>String tekst = switch (status) {
+            <pre style="font-size:0.38em;"><code class="language-java" data-noescape data-trim>enum Status { MOTTATT, SENDT }
+
+String tekst = switch (status) {
     case MOTTATT -> "Mottatt";
     case SENDT   -> "Sendt";
 }; // Glemmer du en? -> Kompileringsfeil!</code></pre>
