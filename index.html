@@ -1024,7 +1024,7 @@ suspend fun hentOrdre(id: UUID): Ordre =
 String tekst = switch (status) {
     case MOTTATT -> "Mottatt";
     case SENDT   -> "Sendt";
-}; // Glemmer du en? -> Kompileringsfeil!</code></pre>
+};</code></pre>
             <p class="code-label java" style="margin-top:0.4em;">Virtual Threads — Project Loom (Java 21)</p>
             <pre style="font-size:0.38em;"><code class="language-java" data-noescape data-trim>try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
     return executor.submit(() -> kallEksternApi(id)).get();
