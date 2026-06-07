@@ -711,10 +711,6 @@ opprett("Espen", aktiv = false) // named arguments</code></pre>
             <blockquote class="fragment">
                 Eliminerer overload-pyramider. Named arguments gjør kallsteder mer dokumenterende.
             </blockquote>
-            <p class="fragment source-note" style="color:var(--kotlin-orange); font-style:normal;">
-                ⚠ Java har ingen plan for default parameters eller named arguments — Kotlin har fortsatt et klart
-                forsprang her.
-            </p>
         </section>
 
         <!-- Slide 10: Top-level functions -->
@@ -795,17 +791,17 @@ opprett("Espen", aktiv = false) // named arguments</code></pre>
                 Extension functions
             </h2>
             <p class="code-label java">Java — statisk utility-metode</p>
-            <pre style="font-size:0.4em;"><code class="language-java" data-noescape data-trim>public class OrgnrUtils {
-    public static boolean harNiSifre(String orgNr) {
-        return orgNr.matches("\\d{9}");
+            <pre style="font-size:0.4em;"><code class="language-java" data-noescape data-trim>public class StringUtils {
+    public static int countWords(String text) {
+        return text.trim().split("\\s+").length;
     }
 }
-OrgnrUtils.harNiSifre("974760843"); // true</code></pre>
-            <p class="code-label kotlin" style="margin-top:0.5em;">Kotlin — extension function</p>
-            <pre class="fragment" style="font-size:0.4em;"><code class="language-kotlin" data-noescape data-trim>fun String.harNiSifre(): Boolean =
-    this.matches(Regex("\\d{9}"))
 
-"974760843".erGyldigOrganisasjonsnummer() // true</code></pre>
+StringUtils.countWords("Kotlin er gøy"); // 3</code></pre>
+            <p class="code-label kotlin" style="margin-top:0.5em;">Kotlin — extension function</p>
+            <pre class="fragment" style="font-size:0.4em;"><code class="language-kotlin" data-noescape data-trim>fun String.countWords() = trim().split("\\s+".toRegex()).size
+
+"Kotlin er gøy".countWords() // 3</code></pre>
             <blockquote class="fragment">
                 Extension functions finnes ikke i Java, og ser heller ikke ut til å være planlagt.
             </blockquote>
