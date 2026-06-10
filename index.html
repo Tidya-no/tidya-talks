@@ -3,1252 +3,216 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Bekjentskap med Kotlin — et reisebrev</title>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/theme/night.min.css"
-          id="theme"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/plugin/highlight/monokai.css"/>
-
+    <title>Tidya Talks</title>
+    
     <style>
         :root {
-            --kotlin-purple: #7F52FF;
-            --kotlin-pink: #C757BC;
-            --kotlin-orange: #E8494B;
-            --kotlin-teal: #00BCD4;
-            --kotlin-green: #4CAF50;
-            --bg-dark: #1A1A2E;
-            --bg-mid: #16213E;
-            --bg-surface: #0F3460;
-            --text-primary: #E8E8F0;
-            --text-muted: #9B9BB0;
-            --code-bg: #0D1117;
-            --accent-line: rgba(127, 82, 255, 0.4);
+            --tidya-bg-primary: #1a1816;
+            --tidya-bg-secondary: #272422;
+            --tidya-accent: #ffbe0b;
+            --tidya-text-primary: #ffffff;
+            --tidya-text-muted: #8d6e63;
+            --tidya-alert: #ff3b3b;
         }
 
-        .reveal-viewport {
-            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-mid) 50%, #0D0D1A 100%);
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        .reveal {
-            font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
-            font-size: 52px;
-            color: var(--text-primary);
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--tidya-bg-primary);
+            color: var(--tidya-text-primary);
+            line-height: 1.6;
         }
 
-        .reveal h1, .reveal h2, .reveal h3 {
-            font-family: 'JetBrains Mono', monospace;
-            text-transform: none;
+        .header-content {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 800;
+            line-height: 0.95;
+            margin-bottom: 1rem;
             letter-spacing: -0.02em;
-            color: #fff;
         }
 
-        .reveal h1 {
-            font-size: 2em;
-            background: linear-gradient(135deg, var(--kotlin-purple), var(--kotlin-pink));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--tidya-text-muted);
+            margin-bottom: 0;
+            font-weight: 400;
+            line-height: 1.4;
         }
 
-        .reveal h2 {
-            font-size: 1.1em;
-            color: var(--kotlin-purple);
-            border-bottom: 2px solid var(--accent-line);
-            padding-bottom: 0.2em;
-            margin-bottom: 0.5em;
-            text-align: center;
-        }
-
-        .reveal h3 {
-            font-size: 0.85em;
-            color: var(--kotlin-teal);
-        }
-
-        .section-badge {
-            display: block;
-            background: rgba(127, 82, 255, 0.15);
-            border: 1px solid var(--kotlin-purple);
-            border-radius: 4px;
-            padding: 0.1em 0.5em;
-            font-size: 0.38em;
-            color: var(--kotlin-purple);
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            margin: 0 auto 0.3em auto;
-            text-align: center;
-            width: fit-content;
-        }
-
-        .reveal pre {
-            border-radius: 8px;
-            border: 1px solid var(--accent-line);
-            box-shadow: 0 4px 32px rgba(0, 0, 0, 0.5);
-            font-size: 0.45em;
-            margin: 0.4em auto;
-            width: 96%;
-        }
-
-        .reveal code {
-            font-family: 'JetBrains Mono', 'Fira Code', monospace;
-        }
-
-        .reveal pre code {
-            padding: 0.8em 1em;
-            background: var(--code-bg);
-        }
-
-        .code-label {
-            display: inline-block;
-            font-size: 0.3em;
-            font-family: 'JetBrains Mono', monospace;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            margin-bottom: 0.1em;
-            margin-left: 0.5em;
-        }
-
-        .code-label.java {
-            color: #F0A500;
-        }
-
-        .code-label.kotlin {
-            color: var(--kotlin-purple);
-        }
-
-        .reveal blockquote {
-            background: rgba(127, 82, 255, 0.08);
-            border-left: 4px solid var(--kotlin-purple);
-            border-radius: 0 8px 8px 0;
-            padding: 0.5em 0.9em;
-            font-size: 0.4em;
-            font-style: italic;
-            color: var(--text-primary);
-            margin: 0.5em auto;
-            width: 90%;
-        }
-
-        .stat-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: repeat(2, 1fr);
-            gap: 0.5em;
-            margin-top: 0.5em;
-            height: 60vh;
-            max-height: 450px;
-            min-height: 380px;
-        }
-
-        .stat-card {
-            background: rgba(127, 82, 255, 0.08);
-            border: 1px solid var(--accent-line);
-            border-radius: 8px;
-            padding: 0.6em 0.5em;
-            text-align: center;
+        .hero-buttons {
             display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            min-height: 0;
-            overflow: hidden;
+            gap: 1rem;
+            flex-wrap: wrap;
         }
 
-        .stat-number {
-            font-size: 1.3em;
-            font-weight: bold;
-            background: linear-gradient(135deg, var(--kotlin-purple), var(--kotlin-pink));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--tidya-accent);
+            color: var(--tidya-bg-primary);
+        }
+
+        .btn-primary:hover {
+            background: #e6a809;
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--tidya-accent);
+            border-color: var(--tidya-accent);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 190, 11, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .talks-section {
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .talks-grid {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+        
+        .talk-card {
+            background: var(--tidya-bg-secondary);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
             display: block;
-            line-height: 1.1;
+            border: 1px solid rgba(255, 190, 11, 0.2);
+            max-width: 600px;
+            width: 100%;
         }
 
-        .stat-label {
-            font-size: 0.32em;
-            color: var(--text-muted);
-            margin-top: 0.3em;
-            display: block;
-            line-height: 1.3;
-            flex-grow: 1;
-            overflow-wrap: break-word;
+        .talk-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            border-color: rgba(255, 190, 11, 0.4);
         }
 
-        .reveal table {
-            font-size: 0.55em;
-            border-collapse: collapse;
-            width: 95%;
-            margin: 0.4em auto;
+        .talk-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
         }
 
-        .reveal table th {
-            background: rgba(127, 82, 255, 0.2);
-            color: var(--kotlin-purple);
-            padding: 0.4em 0.7em;
-            text-align: left;
+        .talk-duration {
+            background: rgba(255, 190, 11, 0.15);
+            color: var(--tidya-accent);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
         }
 
-        .reveal table td {
-            padding: 0.35em 0.7em;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            color: var(--text-primary);
+        .talk-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--tidya-text-primary);
         }
 
-        .reveal table tr:hover td {
-            background: rgba(127, 82, 255, 0.05);
-        }
-
-        .reveal ul, .reveal ol {
-            font-size: 0.68em;
-            line-height: 1.75;
-            margin-left: 0.8em;
-        }
-
-        .reveal ul li::marker {
-            color: var(--kotlin-purple);
-        }
-
-        .title-eyebrow {
-            font-size: 0.32em;
-            color: var(--text-muted);
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            margin-bottom: 0.8em;
-        }
-
-        .title-subtitle {
-            font-size: 0.65em;
-            color: var(--text-muted);
-            margin-top: 0.4em;
-        }
-
-        .title-meta {
-            font-size: 0.45em;
-            color: var(--text-muted);
-            margin-top: 1.5em;
-            border-top: 1px solid var(--accent-line);
-            padding-top: 0.7em;
-            line-height: 1.8;
-        }
-
-        .kotlin-logo {
-            width: 56px;
-            height: 56px;
-            margin: 0 auto 0.4em;
-            display: block;
-        }
-
-        .strikes-back-title {
-            font-size: 1.4em !important;
-            background: linear-gradient(135deg, #F0A500, #FF6B35) !important;
-            -webkit-background-clip: text !important;
-            -webkit-text-fill-color: transparent !important;
-            background-clip: text !important;
-        }
-
-        .reveal .progress span {
-            background: var(--kotlin-purple);
-        }
-
-        .two-col {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.2em;
-            align-items: start;
-            margin-top: 0.4em;
-        }
-
-        .check-list {
-            list-style: none;
-            margin-left: 0;
-            font-size: 0.65em;
-            line-height: 1.8;
-        }
-
-        .check-list li::before {
-            content: '✓ ';
-            color: var(--kotlin-green);
-            font-weight: bold;
-        }
-
-        .warn-list {
-            list-style: none;
-            margin-left: 0;
-            font-size: 0.65em;
-            line-height: 1.8;
-        }
-
-        .warn-list li::before {
-            content: '⚠ ';
-            color: #F0A500;
-        }
-
-        .reveal .slide-number {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.45em;
-            color: var(--text-muted);
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 4px;
-            padding: 0.2em 0.5em;
-            bottom: 8px;
-            left: 8px;
-            right: auto;
-        }
-
-        .source-note {
-            font-size: 0.28em;
-            color: var(--text-muted);
-            margin-top: 0.6em;
+        .talk-subtitle {
+            color: var(--tidya-text-muted);
+            font-size: 1rem;
+            margin-bottom: 1rem;
             font-style: italic;
         }
 
-        .tag {
-            display: inline-block;
-            background: rgba(127, 82, 255, 0.15);
-            border: 1px solid var(--accent-line);
-            border-radius: 4px;
-            padding: 0.05em 0.35em;
-            font-size: 0.75em;
-            color: var(--kotlin-purple);
-            margin: 0.1em;
+        .talk-description {
+            color: var(--tidya-text-primary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
         }
 
-        .tag.java {
-            border-color: rgba(240, 165, 0, 0.4);
-            color: #F0A500;
-            background: rgba(240, 165, 0, 0.08);
+        .talk-author {
+            color: var(--tidya-text-muted);
+            font-size: 0.95rem;
+            font-weight: 500;
         }
 
-        .tag.green {
-            border-color: rgba(76, 175, 80, 0.4);
-            color: var(--kotlin-green);
-            background: rgba(76, 175, 80, 0.08);
-        }
-
-
-        /* Per-slide logo ved siden av h2 */
-        .slide-logo {
-            display: inline-block;
-            width: 28px;
-            height: 28px;
-            vertical-align: middle;
-            opacity: 0.85;
-            margin-right: 0.3em;
-            position: relative;
-            top: -0.05em;
+        @media (max-width: 768px) {
+            .hero {
+                padding: 1rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                justify-content: center;
+            }
+            
+            .talks-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .talk-card {
+                padding: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
-
-<div class="reveal">
-    <div class="slides">
-
-        <!-- ═══════════════════════════════════
-             SEKSJON 1: INTRO
-             ═══════════════════════════════════ -->
-
-        <!-- Slide 1: Tittel -->
-        <section data-auto-animate>
-            <svg data-id="slide-logo" class="kotlin-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <radialGradient id="kg-title" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
-                                    gradientTransform="translate(48 0) rotate(180) scale(48)">
-                        <stop stop-color="#E44857"/>
-                        <stop offset="0.504494" stop-color="#C711E1"/>
-                        <stop offset="1" stop-color="#7F52FF"/>
-                    </radialGradient>
-                </defs>
-                <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kg-title)"/>
-            </svg>
-            <p class="title-eyebrow">For Brønnøysundregistrene 2026</p>
-            <h1 data-id="main-title">Bekjentskap med Kotlin</h1>
-            <p class="title-subtitle">— en Javaveterans reisebrev</p>
-            <p class="title-meta">
-                <br>Av Espen Ønvik Pedersen<br/>
-            </p>
-        </section>
-
-        <!-- Slide 2: Bakgrunn -->
-        <section data-auto-animate style="position:relative;">
-            <span class="section-badge">Intro</span>
-            <h2 data-id="main-title">
-                <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <radialGradient id="kg-intro" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
-                                        gradientTransform="translate(48 0) rotate(180) scale(48)">
-                            <stop stop-color="#E44857"/>
-                            <stop offset="0.504494" stop-color="#C711E1"/>
-                            <stop offset="1" stop-color="#7F52FF"/>
-                        </radialGradient>
-                    </defs>
-                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kg-intro)"/>
-                </svg>
-                Kort om meg
-            </h2>
-            <div style="position:absolute; top:-0.5em; left:17em; width:80px; opacity:0.55; filter:saturate(0.4) brightness(0.85);">
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px"
-                     y="0px" width="90px" height="162px" viewBox="0 0 225.938 407.407" xml:space="preserve">
-            <path fill-rule="evenodd" clip-rule="evenodd"
-                  d="M48.859,43.518c8.424,17.64,2.736,140.832-7.128,184.032c-9.864,43.272-19.728,98.28-22.032,144.576c-1.008,19.728,2.016,27.504,14.904,27.504c22.752,0,51.624-47.952,87.84-46.872c36.288,1.08,47.808,55.008,64.8,54.648c16.992-0.36,30.672-6.264,30.816-58.752C218.563,191.981,87.235,64.973,48.859,43.518z"/>
-                    <path fill-rule="evenodd" clip-rule="evenodd"
-                          d="M162.763,168.726c7.992,13.464,28.368,3.096,29.232-12.096c0.864-15.192-1.368-34.344-11.232-35.064c-9.864-0.72-16.92-10.584-26.784-11.304c-9.864-0.72-20.448,9.144-25.056-3.96s12.384-18.648,25.056-20.736c-11.304-11.304-17.928-23.832-22.896-36.864c-4.968-13.032-8.64-24.984,5.256-30.096c13.896-5.112,12.744,21.168,28.656,33.192c-4.68-17.712-6.408-25.056-6.048-35.352s-0.36-18.144,14.256-16.128c14.616,2.016,8.28,32.4,19.656,44.784c3.456-11.736,5.544-26.64,13.896-32.76s27.36-6.264,15.264,18.864c-12.096,25.128,3.528,38.736-0.144,58.536c-3.672,19.8-15.048,16.2-19.944,28.944c-4.896,12.744,2.88,41.76-6.336,54.792c-9.216,13.032-10.872,33.048-4.896,49.032C172.339,205.374,162.763,168.726,162.763,168.726z"/>
-                    <path fill-rule="evenodd" clip-rule="evenodd"
-                          d="M48.355,185.646c-7.416,50.832-33.192,56.88-34.488,77.976c-1.296,21.096,6.84,23.112,6.336,42.624c-0.504,19.512-17.856,27.432-19.944,38.016s8.928,13.968,15.336,13.968c6.408,0,12.816-28.08,15.408-45.936s-8.496-28.368-8.496-40.608c0-12.24,16.056-34.632,13.104-14.976C48.931,235.686,55.268,208.901,48.355,185.646z"/>
-                    <path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF"
-                          d="M58.292,205.013c-5.616,27.504-40.68,181.08-22.824,183.024c17.856,1.944,43.272-47.52,84.888-47.16c41.688,0.36,58.104,55.44,68.256,55.08c10.152-0.36,16.848,3.6,17.928-58.464c1.08-62.064-36.792-141.336-59.184-176.256C116.971,163.181,84.283,187.518,58.292,205.013z"/>
-                    <g>
-              <path fill="none"
-                    d="M139.162,172.181c-1.95-18.251-19.12-25.421-35.661-23.168c-13.889,1.893-32.403,13.613-34.107,28.64c-1.921,16.937,11.402,32.522,28.361,33.203c15.03,0.604,31.176-6.668,37.93-20.79C138.415,184.362,139.482,178.488,139.162,172.181"/>
-                        <path d="M147.082,171.533c-1.662-17.195-14.407-27.988-30.895-30.627c-15.924-2.549-33.26,4.998-44.408,16.146c-12.538,12.538-13.039,29.978-4.26,44.833c8.661,14.657,27.847,19.501,43.563,15.835C132.588,212.705,148.48,193.896,147.082,171.533"/>
-                        <radialGradient id="SVGID_2_" cx="86.6299" cy="167.0693" r="54.7155"
-                                        gradientUnits="userSpaceOnUse">
-                <stop offset="0" style="stop-color:#FFFFFF"/>
-                            <stop offset="0.0604" style="stop-color:#FBC8B4"/>
-                            <stop offset="0.1829" style="stop-color:#F7978B"/>
-                            <stop offset="0.2995" style="stop-color:#F4716B"/>
-                            <stop offset="0.4199" style="stop-color:#F15251"/>
-                            <stop offset="0.5453" style="stop-color:#EF3A3D"/>
-                            <stop offset="0.6778" style="stop-color:#EE292F"/>
-                            <stop offset="0.822" style="stop-color:#ED1F27"/>
-                            <stop offset="1" style="stop-color:#ED1C24"/>
-              </radialGradient>
-                        <path fill="url(#SVGID_2_)" stroke="#000000"
-                              d="M139.162,177.941c-1.493,15.627-13.947,28.182-28.944,31.824c-15.87,3.854-33.393-2.257-39.096-18.576c-2.912-8.332-2.37-16.879,2.637-24.198c4.223-6.171,11.033-11,17.779-14.066c13.924-6.326,33.832-7.029,43.531,7.077C138.744,165.348,139.387,171.641,139.162,177.941"/>
-            </g>
-          </svg>
-            </div>
-            <ul style="margin-top:0.4em;">
-                <li class="fragment fade-up">Espen Ønvik Pedersen</li>
-                <li class="fragment fade-up">Innleid konsulent hos BR på tredje året</li>
-                <li class="fragment fade-up">To år på Team Reelle og et halvt år på Team Våpen</li>
-                <li class="fragment fade-up">Første erfaring med Java: tidlig 2000-tall</li>
-                <li class="fragment fade-up">Har jobbet fullt med Kotlin siste 6 måneder</li>
-            </ul>
-        </section>
-
-        <!-- ═══════════════════════════════════
-             SEKSJON 2: FAKTA
-             ═══════════════════════════════════ -->
-
-        <!-- Slide 2b: Hvorfor Kotlin oppsto -->
-        <section>
-            <span class="section-badge">Intro</span>
-            <h2>
-                <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <radialGradient id="kg-intro2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
-                                        gradientTransform="translate(48 0) rotate(180) scale(48)">
-                            <stop stop-color="#E44857"/>
-                            <stop offset="0.504494" stop-color="#C711E1"/>
-                            <stop offset="1" stop-color="#7F52FF"/>
-                        </radialGradient>
-                    </defs>
-                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kg-intro2)"/>
-                </svg>
-                Hvorfor laget JetBrains Kotlin?
-            </h2>
-            <ul>
-                <li class="fragment fade-up">Sitat: "Vi ville bli mer produktive ved å bytte til et mer ekspressivt
-                    språk."
-                </li>
-                <li class="fragment fade-up">JetBrains brukte altså Java selv, og ønsket bedre produktivitet</li>
-                <li class="fragment fade-up">De ville ha full Java-interop (kalle Java-kode direkte, uten omskrivning)
-                </li>
-                <li class="fragment fade-up">Oppstart i <strong>2011</strong> første stabile versjon kom i
-                    <strong>2016</strong></li>
-                <li class="fragment fade-up">Google kunngjorde Kotlin som offisielt Android-språk i
-                    <strong>2017</strong> 🚀
-                </li>
-            </ul>
-        </section>
-
-        <!-- Slide 3: Fakta -->
-        <section>
-            <span class="section-badge">Fakta</span>
-            <h2>
-                <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <radialGradient id="kg-fakta" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
-                                        gradientTransform="translate(48 0) rotate(180) scale(48)">
-                            <stop stop-color="#E44857"/>
-                            <stop offset="0.504494" stop-color="#C711E1"/>
-                            <stop offset="1" stop-color="#7F52FF"/>
-                        </radialGradient>
-                    </defs>
-                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kg-fakta)"/>
-                </svg>
-                Kotlin i verden
-            </h2>
-            <div class="stat-grid">
-                <div class="stat-card fragment">
-                    <span class="stat-number">51%</span>
-                    <span class="stat-label">av Kotlin-utviklere ønsker å fortsette å bruke språket<br/><span
-                            style="color:var(--text-muted)">(Java: 41,8%)</span><br/><a
-                            href="https://survey.stackoverflow.co/2025/technology" target="_blank"
-                            style="color:var(--kotlin-teal);font-size:0.85em;">Stack Overflow dev survey 2025</a></span>
+    <section class="talks-section" id="talks">
+        <div class="header-content">
+            <h1 class="hero-title">Tidya Talks</h1>
+            <p class="hero-subtitle">Presentasjoner og foredrag fra våre konsulenter</p>
+        </div>
+        
+        <div class="talks-grid">
+            <a href="bekjentskap-med-kotlin.html" class="talk-card">
+                <div class="talk-meta">
+                    <span class="talk-duration">15–20 min</span>
                 </div>
-                <div class="stat-card fragment">
-                    <span class="stat-number">10,8%</span>
-                    <span class="stat-label">av alle utviklere bruker Kotlin aktivt<br/><span
-                            style="color:var(--text-muted)">(Java: 29,4%)</span><br/><a
-                            href="https://survey.stackoverflow.co/2025/technology" target="_blank"
-                            style="color:var(--kotlin-teal);font-size:0.85em;">Stack Overflow dev survey 2025</a></span>
+                <h3 class="talk-title">Bekjentskap med Kotlin</h3>
+                <p class="talk-subtitle">— en Javaveterans reisebrev</p>
+                <div class="talk-description">
+                    Kotlin er noe mange har hørt om som alternativ til Java. Jeg havnet plutselig i et rent Kotlin-prosjekt etter mange år som Java-utvikler, og her deler jeg litt erfaringer og tanker etter 6 måneder med Kotlin på Våpenregisteret.
                 </div>
-                <div class="stat-card fragment">
-                    <span class="stat-number">2,5M</span>
-                    <span class="stat-label">Kotlin-utviklere finnes globalt<br/><span style="color:var(--text-muted)">(Java: ~23M)</span><br/><a
-                            href="https://blog.jetbrains.com/kotlin/2025/05/kotlinconf-2025-language-features-ai-powered-development-and-kotlin-multiplatform/"
-                            target="_blank"
-                            style="color:var(--kotlin-teal);font-size:0.85em;">KotlinConf 2025</a></span>
-                </div>
-                <div class="stat-card fragment">
-                    <span class="stat-number">↗</span>
-                    <span class="stat-label">"Rust, Go, and Kotlin continue their slow, steady ascent"<br/><a
-                            href="https://devecosystem-2025.jetbrains.com/tools-and-trends" target="_blank"
-                            style="color:var(--kotlin-teal); font-size:0.85em;">JetBrains State of Developer Ecosystem Report 2025</a></span>
-                </div>
-                <div class="stat-card fragment">
-                    <span class="stat-number">27%</span>
-                    <span class="stat-label">av Spring-utviklere har brukt Kotlin<br/>Rod Johnson (skaperen av Spring)<br/><a
-                            href="https://blog.jetbrains.com/kotlin/2025/05/strategic-partnership-with-spring/"
-                            target="_blank"
-                            style="color:var(--kotlin-teal); font-size:0.85em;">KotlinConf 2025</a></span>
-                </div>
-                <div class="stat-card fragment">
-                    <span class="stat-number">🤝</span>
-                    <span class="stat-label">Spring og JetBrains har formalisert et samarbeid om Kotlin som førsteklasses språk i Spring<br/><a
-                            href="https://blog.jetbrains.com/kotlin/2025/05/strategic-partnership-with-spring/"
-                            target="_blank" style="color:var(--kotlin-teal); font-size:0.85em;">JetBrains blogg 2025</a></span>
-                </div>
-            </div>
-        </section>
-
-        <!-- ═══════════════════════════════════
-             SEKSJON 3: DET SOM SATTE SEG
-             ═══════════════════════════════════ -->
-
-        <!-- Slide 4: I bagasjen -->
-        <section>
-            <span class="section-badge">I bagasjen</span>
-            <h2>
-                <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <radialGradient id="kg-slide-1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
-                                        gradientTransform="translate(48 0) rotate(180) scale(48)">
-                            <stop stop-color="#E44857"/>
-                            <stop offset="0.504494" stop-color="#C711E1"/>
-                            <stop offset="1" stop-color="#7F52FF"/>
-                        </radialGradient>
-                    </defs>
-                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kg-slide-1)"/>
-                </svg>
-                Det som dukket opp på reisen
-            </h2>
-            <p style="font-size:0.55em; color:var(--text-muted);">Seks måneder, her er det som dukket opp:</p>
-            <div style="display:flex; flex-wrap:wrap; gap:0.4em; justify-content:center; margin-top:0.6em;">
-                <span class="tag">Null-safety + Elvis (?:)</span>
-                <span class="tag">val / var</span>
-                <span class="tag">data class + copy()</span>
-                <span class="tag">Smart casts</span>
-                <span class="tag">when + sealed classes</span>
-                <span class="tag">String templates</span>
-                <span class="tag">Default params</span>
-                <span class="tag">Top-level functions</span>
-                <span class="tag">Trailing lambdas</span>
-                <span class="tag">Extension functions</span>
-                <span class="tag">Coroutines</span>
-                <span class="tag">Scope functions</span>
-            </div>
-        </section>
-
-        <!-- Slide 5: Null-safety -->
-        <section>
-            <span class="section-badge">I bagasjen</span>
-            <h2>
-                <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <radialGradient id="kg-slide-3" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
-                                        gradientTransform="translate(48 0) rotate(180) scale(48)">
-                            <stop stop-color="#E44857"/>
-                            <stop offset="0.504494" stop-color="#C711E1"/>
-                            <stop offset="1" stop-color="#7F52FF"/>
-                        </radialGradient>
-                    </defs>
-                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kg-slide-3)"/>
-                </svg>
-                Null-safety + Elvis (?:)
-            </h2>
-            <p class="code-label java">Java</p>
-            <pre><code class="language-java" data-noescape data-trim>// Kompilerer fint. Kan krasje i prod.
-String navn = hentBruker().getNavn().toUpperCase();</code></pre>
-            <p class="code-label kotlin" style="margin-top:0.5em;">Kotlin</p>
-            <pre class="fragment"><code class="language-kotlin" data-noescape data-trim>// Kompilatoren nekter deg å glemme null
-val navn: String? = hentBruker()?.navn
-val store = navn?.uppercase() ?: "UKJENT" // ?: Elvis operator: fallback-verdi</code></pre>
-            <blockquote class="fragment">
-                Du velger bevisst å håndtere null — ikke glemme det
-            </blockquote>
-        </section>
-
-        <!-- Slide 6: val/var + data class + copy() -->
-        <section>
-            <span class="section-badge">I bagasjen</span>
-            <h2>
-                <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <radialGradient id="kg-slide-5" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
-                                        gradientTransform="translate(48 0) rotate(180) scale(48)">
-                            <stop stop-color="#E44857"/>
-                            <stop offset="0.504494" stop-color="#C711E1"/>
-                            <stop offset="1" stop-color="#7F52FF"/>
-                        </radialGradient>
-                    </defs>
-                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kg-slide-5)"/>
-                </svg>
-                val / var (Immutability som default)
-            </h2>
-            <p class="code-label java">Java — ingen hindring mot å mutere tilstand</p>
-            <pre><code class="language-java" data-noescape data-trim>Ordre ordre = new Ordre(Status.MOTTATT);
-ordre.setStatus(Status.SENDT);      // lovlig — men var det meningen?
-ordre.setStatus(Status.ANNULLERT);  // også lovlig...</code></pre>
-            <p class="code-label kotlin" style="margin-top:0.5em;">Kotlin — val er read-only</p>
-            <pre class="fragment"><code class="language-kotlin" data-noescape data-trim>data class Ordre(val status: Status)
-
-val ordre = Ordre(Status.MOTTATT)
-ordre.status = Status.SENDT           // kompileringsfeil — ikke lov
-val sendt = ordre.copy(status = Status.SENDT) // slik gjør man det</code></pre>
-
-            <blockquote class="fragment">
-                data class sin copy(): kopierer alt og lar deg overstyre det du trenger
-            </blockquote>
-        </section>
-
-        <!-- Slide 7: Smart casts -->
-        <section>
-            <span class="section-badge">I bagasjen</span>
-            <h2>
-                <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <radialGradient id="kg-slide-7" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
-                                        gradientTransform="translate(48 0) rotate(180) scale(48)">
-                            <stop stop-color="#E44857"/>
-                            <stop offset="0.504494" stop-color="#C711E1"/>
-                            <stop offset="1" stop-color="#7F52FF"/>
-                        </radialGradient>
-                    </defs>
-                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kg-slide-7)"/>
-                </svg>
-                Smart casts
-            </h2>
-            <p class="code-label java">Java 16+</p>
-            <pre><code class="language-java" data-noescape data-trim>if (melding instanceof OrdreOpprettet ordreOpprettet) {
-    behandle(ordreOpprettet.getOrdreId());
-}</code></pre>
-            <blockquote class="fragment">
-                Den manuelle cast-smerten i Java ble bedre med pattern matching i Java 16.
-            </blockquote>
-            <p class="code-label kotlin" style="margin-top:0.5em;">Kotlin</p>
-            <pre class="fragment"><code class="language-kotlin" data-noescape data-trim>if (melding is OrdreOpprettet) {
-    behandle(melding.ordreId) // allerede castet — kompilatoren vet
-}</code></pre>
-            <blockquote class="fragment">
-                Kotlin har hatt smart cast fra dag én.
-            </blockquote>
-        </section>
-        <!-- Slide 9a: String templates -->
-        <section>
-            <span class="section-badge">I bagasjen</span>
-            <h2>
-                <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <radialGradient id="kg-slide-9" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
-                                        gradientTransform="translate(48 0) rotate(180) scale(48)">
-                            <stop stop-color="#E44857"/>
-                            <stop offset="0.504494" stop-color="#C711E1"/>
-                            <stop offset="1" stop-color="#7F52FF"/>
-                        </radialGradient>
-                    </defs>
-                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kg-slide-9)"/>
-                </svg>
-                String templates
-            </h2>
-            <p class="code-label java">Java</p>
-            <pre><code class="language-java" data-noescape data-trim>String melding = "Hei, " + bruker.getNavn()
-    + "! Du har " + antall + " meldinger.";</code></pre>
-            <p class="code-label kotlin" style="margin-top:0.5em;">Kotlin</p>
-            <pre class="fragment"><code class="language-kotlin" data-noescape data-trim>val melding = "Hei, ${bruker.navn}! Du har $antall meldinger."</code></pre>
-            <blockquote class="fragment" style="margin-top:0.6em;">
-                Ingen StringBuilder. Ingen String.format. Mer lesbar kode.
-            </blockquote>
-        </section>
-
-        <!-- Slide 9b: Default params + named arguments -->
-        <section>
-            <span class="section-badge">I bagasjen</span>
-            <h2>
-                <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <radialGradient id="kg-slide-11" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
-                                        gradientTransform="translate(48 0) rotate(180) scale(48)">
-                            <stop stop-color="#E44857"/>
-                            <stop offset="0.504494" stop-color="#C711E1"/>
-                            <stop offset="1" stop-color="#7F52FF"/>
-                        </radialGradient>
-                    </defs>
-                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kg-slide-11)"/>
-                </svg>
-                Default parameters + named arguments
-            </h2>
-            <p class="code-label java">Java — tre overloads for å håndtere defaults</p>
-            <pre><code class="language-java" data-noescape data-trim>void opprett(String navn) { opprett(navn, "standard", true); }
-void opprett(String navn, String type) { opprett(navn, type, true); }
-void opprett(String navn, String type, boolean aktiv) { ... }</code></pre>
-            <p class="code-label kotlin" style="margin-top:0.5em;">Kotlin — én metode</p>
-            <pre class="fragment"><code class="language-kotlin" data-noescape data-trim>fun opprett(navn: String, type: String = "standard", aktiv: Boolean = true) { ... }
-
-opprett("Espen")
-opprett("Espen", aktiv = false) // named arguments</code></pre>
-            <blockquote class="fragment">
-                Eliminerer overload-pyramider. Named arguments gjør kallsteder mer dokumenterende.
-            </blockquote>
-        </section>
-
-        <!-- Slide 10: Top-level functions -->
-        <section>
-            <span class="section-badge">I bagasjen</span>
-            <h2>
-                <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <radialGradient id="kg-slide-13" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
-                                        gradientTransform="translate(48 0) rotate(180) scale(48)">
-                            <stop stop-color="#E44857"/>
-                            <stop offset="0.504494" stop-color="#C711E1"/>
-                            <stop offset="1" stop-color="#7F52FF"/>
-                        </radialGradient>
-                    </defs>
-                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kg-slide-13)"/>
-                </svg>
-                Ikke alt trenger å leve i en klasse
-            </h2>
-            <p class="code-label java">Java — utility-klasse for å få til det samme</p>
-            <pre><code class="language-java" data-noescape data-trim>public final class OrdreUtils {
-    private OrdreUtils() {}
-    public static BigDecimal beregnMva(BigDecimal belop) { ... }
-}</code></pre>
-            <p class="code-label kotlin" style="margin-top:0.4em;">Kotlin — top-level function</p>
-            <pre class="fragment"><code class="language-kotlin" data-noescape data-trim>fun beregnMva(belop: BigDecimal): BigDecimal { ... }</code></pre>
-            <blockquote class="fragment">
-                I Kotlin er funksjoner førsteklasses borgere, som ikke må eksistere i en klasse
-            </blockquote>
-        </section>
-
-        <!-- Slide 11a: Trailing lambdas -->
-        <section>
-            <span class="section-badge">I bagasjen</span>
-            <h2>
-                <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <radialGradient id="kg-slide-15" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
-                                        gradientTransform="translate(48 0) rotate(180) scale(48)">
-                            <stop stop-color="#E44857"/>
-                            <stop offset="0.504494" stop-color="#C711E1"/>
-                            <stop offset="1" stop-color="#7F52FF"/>
-                        </radialGradient>
-                    </defs>
-                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kg-slide-15)"/>
-                </svg>
-                Trailing lambdas
-            </h2>
-            <p class="code-label java">Java — lambda med eksplisitt parameter</p>
-            <pre><code class="language-java" data-noescape data-trim>List.of(1, 2, 3).stream()
-    .filter(n -> n > 1)
-    .toList();</code></pre>
-            <p class="code-label kotlin" style="margin-top:0.5em;">Kotlin — lambda utenfor parentesene og en parameter
-                heter automatisk <code>it</code></p>
-            <pre class="fragment"><code class="language-kotlin" data-noescape data-trim>listOf(1, 2, 3).filter { it > 1 }</code></pre>
-            <blockquote class="fragment">
-                "Første gang jeg så dette: hva er det her? <br/>
-                Andre gang: okei..<br/>
-                Tredje gang: hmm, dette er faktisk ganske bra!"
-            </blockquote>
-        </section>
-
-        <!-- Slide 11b: Extension functions -->
-        <section>
-            <span class="section-badge">I bagasjen</span>
-            <h2>
-                <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <radialGradient id="kg-slide-17" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
-                                        gradientTransform="translate(48 0) rotate(180) scale(48)">
-                            <stop stop-color="#E44857"/>
-                            <stop offset="0.504494" stop-color="#C711E1"/>
-                            <stop offset="1" stop-color="#7F52FF"/>
-                        </radialGradient>
-                    </defs>
-                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kg-slide-17)"/>
-                </svg>
-                Extension functions
-            </h2>
-            <p class="code-label java">Java — statisk utility-metode</p>
-            <pre style="font-size:0.4em;"><code class="language-java" data-noescape data-trim>public class StringUtils {
-    public static int countWords(String text) {
-        return text.trim().split("\\s+").length;
-    }
-}
-
-StringUtils.countWords("Java er gøy"); // 3</code></pre>
-            <p class="code-label kotlin" style="margin-top:0.5em;">Kotlin — extension function</p>
-            <pre class="fragment" style="font-size:0.4em;"><code class="language-kotlin" data-noescape data-trim>fun String.countWords() = trim().split("\\s+".toRegex()).size
-
-"Kotlin er gøy".countWords() // 3</code></pre>
-            <blockquote class="fragment">
-                Extension functions finnes ikke i Java, og ser heller ikke ut til å være planlagt.
-            </blockquote>
-        </section>
-
-        <!-- Slide 12: when + sealed classes -->
-        <section>
-            <span class="section-badge">I bagasjen</span>
-            <h2>
-                <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <radialGradient id="kg-slide-19" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
-                                        gradientTransform="translate(48 0) rotate(180) scale(48)">
-                            <stop stop-color="#E44857"/>
-                            <stop offset="0.504494" stop-color="#C711E1"/>
-                            <stop offset="1" stop-color="#7F52FF"/>
-                        </radialGradient>
-                    </defs>
-                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kg-slide-19)"/>
-                </svg>
-                when + sealed classes
-            </h2>
-            <p class="code-label kotlin">Kotlin</p>
-            <pre><code class="language-kotlin" data-noescape data-trim>sealed interface Status
-object Aktiv : Status
-object Inaktiv : Status
-
-val tekst = when (status) {
-    is Aktiv   -> "Aktiv"
-    is Inaktiv -> "Inaktiv"
-    // Glemmer du en? Kompileringsfeil!
-}
-</code></pre>
-            <blockquote class="fragment">
-                Ny status gir kompileringsfeil alle steder den ikke håndteres
-            </blockquote>
-        </section>
-
-        <!-- Slide 13: Scope functions -->
-        <section>
-            <span class="section-badge">I bagasjen</span>
-            <h2>
-                <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <radialGradient id="kg-slide-21" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
-                                        gradientTransform="translate(48 0) rotate(180) scale(48)">
-                            <stop stop-color="#E44857"/>
-                            <stop offset="0.504494" stop-color="#C711E1"/>
-                            <stop offset="1" stop-color="#7F52FF"/>
-                        </radialGradient>
-                    </defs>
-                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kg-slide-21)"/>
-                </svg>
-                Scope functions
-            </h2>
-            <p class="code-label" style="color:var(--text-muted);">Uten scope functions — vanlig imperativ
-                tilnærming</p>
-            <pre><code class="language-kotlin" data-noescape data-trim>log.info("Behandler $ordre")
-val beregnet = beregn(ordre)
-beregnet.valider()
-val resultat = lagre(beregnet)</code></pre>
-            <p class="code-label kotlin" style="margin-top:0.5em;">Med scope functions — alt i én kjede</p>
-            <pre class="fragment"><code class="language-kotlin" data-noescape data-trim>val resultat = ordre
-    .also { log.info("Behandler $it") }
-    .let { beregn(it) }
-    .apply { valider() }
-    .run { lagre(this) }</code></pre>
-            <blockquote class="fragment" style="margin-top:0.6em;">
-                Gjør det samme — men er det mer lesbart?
-            </blockquote>
-        </section>
-
-        <!-- Slide 14: Coroutines -->
-        <section>
-            <span class="section-badge">I bagasjen</span>
-            <h2>
-                <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <radialGradient id="kg-slide-23" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
-                                        gradientTransform="translate(48 0) rotate(180) scale(48)">
-                            <stop stop-color="#E44857"/>
-                            <stop offset="0.504494" stop-color="#C711E1"/>
-                            <stop offset="1" stop-color="#7F52FF"/>
-                        </radialGradient>
-                    </defs>
-                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kg-slide-23)"/>
-                </svg>
-                Coroutines
-            </h2>
-            <p class="code-label kotlin">Kotlin — suspend functions</p>
-            <pre style="font-size:0.4em;"><code class="language-kotlin" data-noescape data-trim>// Kotlin — suspend function
-suspend fun hentOrdre(id: UUID): Ordre =
-    kallEksternApi(id)</code></pre>
-            <p style="font-size:0.38em; color:var(--text-muted); margin-top:0.4em;">
-                Kraftig, litt nye konsepter å lære.
-            </p>
-            <blockquote class="fragment" style="margin-top:0.6em;">
-                Kotlin løser blokkerende tråder med coroutines og suspend functions. Java 21 kom med virtual threads -
-                ikke helt det samme, men et steg i samme retning.
-            </blockquote>
-        </section>
-
-        <!-- Slide 15: Spring + Kotlin -->
-        <section>
-            <span class="section-badge">Ute i felten</span>
-            <h2>
-                <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <radialGradient id="kg-slide-25" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
-                                        gradientTransform="translate(48 0) rotate(180) scale(48)">
-                            <stop stop-color="#E44857"/>
-                            <stop offset="0.504494" stop-color="#C711E1"/>
-                            <stop offset="1" stop-color="#7F52FF"/>
-                        </radialGradient>
-                    </defs>
-                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kg-slide-25)"/>
-                </svg>
-                Spring + Kotlin
-            </h2>
-            <ul>
-                <li class="fragment fade-up">Spring Boot har hatt solid Kotlin-støtte siden 2.x — Spring Boot 4 tar det
-                    et steg videre
-                </li>
-                <li class="fragment fade-up">Spring Boot 4 setter Kotlin 2.2 som minimum baseline — og planlegger å
-                    følge nye Kotlin-versjoner release for release <a
-                            href="https://spring.io/blog/2025/12/18/next-level-kotlin-support-in-spring-boot-4"
-                            target="_blank" style="font-size:0.7em; color:var(--text-muted); text-decoration:none;">(Spring
-                        Blog)</a></li>
-                <li class="fragment fade-up">JetBrains og Spring inngikk strategisk partnerskap i 2025 — mål: gjøre
-                    Spring Boot 4 det beste rammeverket for Kotlin-backend <a
-                            href="https://blog.jetbrains.com/kotlin/2025/05/strategic-partnership-with-spring"
-                            target="_blank" style="font-size:0.7em; color:var(--text-muted); text-decoration:none;">(JetBrains
-                        Blog)</a></li>
-            </ul>
-        </section>
-
-        <!-- ═══════════════════════════════════
-             SEKSJON 6: JAVA STRIKES BACK
-             ═══════════════════════════════════ -->
-
-        <!-- Slide 16: Java Strikes Back — intro -->
-        <section data-background-color="#1A0800" data-transition="zoom">
-            <h2 class="strikes-back-title">⚡ Java Strikes Back</h2>
-            <p style="font-size:0.5em; color:var(--text-muted);">Java er ikke stille. Her er hva som faktisk har
-                skjedd.</p>
-            <div style="display:flex; flex-wrap:wrap; gap:0.5em; justify-content:center; margin-top:0.8em;">
-                <span class="tag java fragment">Records (Java 16)</span>
-                <span class="tag java fragment">Sealed classes (Java 17)</span>
-                <span class="tag java fragment">Pattern matching (Java 16+)</span>
-                <span class="tag java fragment">Virtual Threads (Java 21)</span>
-                <span class="tag java fragment">Value Classes — preview (JDK 26)</span>
-                <span class="tag java fragment">Null-aware typer — under arbeid</span>
-            </div>
-        </section>
-
-        <!-- Slide 17a: Records + Sealed -->
-        <section data-background-color="#1A0800">
-            <span class="section-badge">Java Strikes Back</span>
-            <h2 class="strikes-back-title">
-                <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 300 550" xmlns="http://www.w3.org/2000/svg"
-                     style="width:35px;height:64px; vertical-align: middle; margin-right: 0.3em;">
-                    <path style="fill:#5382A1;"
-                          d="M102.681,291.324c0,0-14.178,8.245,10.09,11.035c29.4,3.354,44.426,2.873,76.825-3.259c0,0,8.518,5.341,20.414,9.967C137.38,340.195,45.634,307.264,102.681,291.324"/>
-                    <path style="fill:#5382A1;"
-                          d="M93.806,250.704c0,0-15.902,11.771,8.384,14.283c31.406,3.24,56.208,3.505,99.125-4.759c0,0,5.936,6.018,15.27,9.309C128.771,295.215,30.962,271.562,93.806,250.704"/>
-                    <path style="fill:#F8981D;"
-                          d="M168.625,181.799c17.896,20.604-4.702,39.145-4.702,39.145s45.441-23.458,24.572-52.833c-19.491-27.394-34.438-41.005,46.479-87.934C234.974,80.177,107.961,111.899,168.625,181.799"/>
-                    <path style="fill:#5382A1;"
-                          d="M264.684,321.369c0,0,10.492,8.645-11.555,15.333c-41.923,12.7-174.488,16.535-211.314,0.506c-13.238-5.759,11.587-13.751,19.396-15.428c8.144-1.766,12.798-1.437,12.798-1.437c-14.722-10.371-95.157,20.364-40.857,29.166C181.236,373.524,303.095,338.695,264.684,321.369"/>
-                    <path style="fill:#F8981D;"
-                          d="M188.495,4.399c0,0,38.55,38.563-36.563,97.862c-60.233,47.568-13.735,74.69-0.025,105.678c-35.159-31.722-60.961-59.647-43.651-85.637C133.663,84.151,204.049,65.654,188.495,4.399"/>
-                    <path style="fill:#5382A1;"
-                          d="M116.339,374.246c66.815,4.277,169.417-2.373,171.847-33.988c0,0-4.671,11.985-55.219,21.503c-57.028,10.732-127.364,9.479-169.081,2.601C63.887,364.361,72.426,371.43,116.339,374.246"/>
-                </svg>
-                Det Java har levert
-            </h2>
-
-            <p class="code-label java" style="margin-top:0.4em;">Records (Java 16) — reduserer behovet for Lombok</p>
-            <pre style="font-size:0.4em;"><code class="language-java" data-noescape data-trim>record Ordre(UUID id, Status status) {}</code></pre>
-
-            <p class="code-label java" style="margin-top:0.5em;">Sealed classes (Java 17)</p>
-            <pre style="font-size:0.4em;"><code class="language-java" data-noescape data-trim>sealed interface Hendelse
-    permits Opprettet, Bekreftet, Annullert {}</code></pre>
-
-            <p class="code-label java" style="margin-top:0.5em;">Pattern Matching (Java 16 - 21) - Switch expressions, guarded og deconstruction patterns</p>
-            <pre style="font-size:0.4em;"><code class="language-java" data-noescape data-trim>if (melding instanceof OrdreOpprettet ordre) {
-    behandle(ordre.getOrdreId());
-}</code></pre>
-        </section>
-
-        <!-- Slide 17b: Switch + Virtual Threads -->
-        <section data-background-color="#1A0800">
-            <span class="section-badge">Java Strikes Back</span>
-            <h2 class="strikes-back-title">
-                <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 300 550" xmlns="http://www.w3.org/2000/svg"
-                     style="width:35px;height:64px; vertical-align: middle; margin-right: 0.3em;">
-                    <path style="fill:#5382A1;"
-                          d="M102.681,291.324c0,0-14.178,8.245,10.09,11.035c29.4,3.354,44.426,2.873,76.825-3.259c0,0,8.518,5.341,20.414,9.967C137.38,340.195,45.634,307.264,102.681,291.324"/>
-                    <path style="fill:#5382A1;"
-                          d="M93.806,250.704c0,0-15.902,11.771,8.384,14.283c31.406,3.24,56.208,3.505,99.125-4.759c0,0,5.936,6.018,15.27,9.309C128.771,295.215,30.962,271.562,93.806,250.704"/>
-                    <path style="fill:#F8981D;"
-                          d="M168.625,181.799c17.896,20.604-4.702,39.145-4.702,39.145s45.441-23.458,24.572-52.833c-19.491-27.394-34.438-41.005,46.479-87.934C234.974,80.177,107.961,111.899,168.625,181.799"/>
-                    <path style="fill:#5382A1;"
-                          d="M264.684,321.369c0,0,10.492,8.645-11.555,15.333c-41.923,12.7-174.488,16.535-211.314,0.506c-13.238-5.759,11.587-13.751,19.396-15.428c8.144-1.766,12.798-1.437,12.798-1.437c-14.722-10.371-95.157,20.364-40.857,29.166C181.236,373.524,303.095,338.695,264.684,321.369"/>
-                    <path style="fill:#F8981D;"
-                          d="M188.495,4.399c0,0,38.55,38.563-36.563,97.862c-60.233,47.568-13.735,74.69-0.025,105.678c-35.159-31.722-60.961-59.647-43.651-85.637C133.663,84.151,204.049,65.654,188.495,4.399"/>
-                    <path style="fill:#5382A1;"
-                          d="M116.339,374.246c66.815,4.277,169.417-2.373,171.847-33.988c0,0-4.671,11.985-55.219,21.503c-57.028,10.732-127.364,9.479-169.081,2.601C63.887,364.361,72.426,371.43,116.339,374.246"/>
-                </svg>
-                Det Java har levert
-            </h2>
-
-            <p class="code-label java" style="margin-top:0.3em;">Switch expressions (Java 21)</p>
-            <pre style="font-size:0.38em;"><code class="language-java" data-noescape data-trim>enum Status { MOTTATT, SENDT }
-
-String tekst = switch (status) {
-    case MOTTATT -> "Mottatt";
-    case SENDT   -> "Sendt";
-};</code></pre>
-            <p class="code-label java" style="margin-top:0.4em;">Virtual Threads — Project Loom (Java 21)</p>
-            <pre style="font-size:0.38em;"><code class="language-java" data-noescape data-trim>try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
-    return executor.submit(() -> kallEksternApi(id)).get();
-}</code></pre>
-        </section>
-
-        <!-- Slide 18: Det som er levert -->
-        <section data-background-color="#1A0800">
-            <span class="section-badge">Java Strikes Back</span>
-            <h2 class="strikes-back-title">
-                <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 300 550" xmlns="http://www.w3.org/2000/svg"
-                     style="width:35px;height:64px; vertical-align: middle; margin-right: 0.3em;">
-                    <path style="fill:#5382A1;"
-                          d="M102.681,291.324c0,0-14.178,8.245,10.09,11.035c29.4,3.354,44.426,2.873,76.825-3.259c0,0,8.518,5.341,20.414,9.967C137.38,340.195,45.634,307.264,102.681,291.324"/>
-                    <path style="fill:#5382A1;"
-                          d="M93.806,250.704c0,0-15.902,11.771,8.384,14.283c31.406,3.24,56.208,3.505,99.125-4.759c0,0,5.936,6.018,15.27,9.309C128.771,295.215,30.962,271.562,93.806,250.704"/>
-                    <path style="fill:#F8981D;"
-                          d="M168.625,181.799c17.896,20.604-4.702,39.145-4.702,39.145s45.441-23.458,24.572-52.833c-19.491-27.394-34.438-41.005,46.479-87.934C234.974,80.177,107.961,111.899,168.625,181.799"/>
-                    <path style="fill:#5382A1;"
-                          d="M264.684,321.369c0,0,10.492,8.645-11.555,15.333c-41.923,12.7-174.488,16.535-211.314,0.506c-13.238-5.759,11.587-13.751,19.396-15.428c8.144-1.766,12.798-1.437,12.798-1.437c-14.722-10.371-95.157,20.364-40.857,29.166C181.236,373.524,303.095,338.695,264.684,321.369"/>
-                    <path style="fill:#F8981D;"
-                          d="M188.495,4.399c0,0,38.55,38.563-36.563,97.862c-60.233,47.568-13.735,74.69-0.025,105.678c-35.159-31.722-60.961-59.647-43.651-85.637C133.663,84.151,204.049,65.654,188.495,4.399"/>
-                    <path style="fill:#5382A1;"
-                          d="M116.339,374.246c66.815,4.277,169.417-2.373,171.847-33.988c0,0-4.671,11.985-55.219,21.503c-57.028,10.732-127.364,9.479-169.081,2.601C63.887,364.361,72.426,371.43,116.339,374.246"/>
-                </svg>
-                Java henter inn
-            </h2>
-            <table style="font-size:0.35em;">
-                <thead>
-                <tr>
-                    <th>Prosjekt</th>
-                    <th>Hva</th>
-                    <th>Status</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr class="fragment">
-                    <td>Valhalla</td>
-                    <td>Value Classes — objekter med verdi-semantikk, ingen boxing</td>
-                    <td><span class="tag" style="font-size:0.8em;">Preview JDK 26</span></td>
-                </tr>
-                <tr class="fragment">
-                    <td>Valhalla</td>
-                    <td>Null-aware typer — typesystem à la Kotlin null-safety</td>
-                    <td><span class="tag" style="font-size:0.8em;">Under utforskning</span></td>
-                </tr>
-                <tr class="fragment">
-                    <td>Loom</td>
-                    <td>Virtual Threads — komplett fra Java 24, Java 25 LTS</td>
-                    <td><span class="tag green" style="font-size:0.8em;">Levert</span></td>
-                </tr>
-                <tr class="fragment">
-                    <td>Amber</td>
-                    <td>Records, sealed classes, pattern matching — Java 16 til 21</td>
-                    <td><span class="tag green" style="font-size:0.8em;">Levert</span></td>
-                </tr>
-                <tr class="fragment">
-                    <td>Amber</td>
-                    <td>String Templates — tilsvarende Kotlins $variabel</td>
-                    <td><span class="tag" style="font-size:0.8em;">Trukket tilbake i Java 23 — ingen ny plan</span></td>
-                </tr>
-                </tbody>
-            </table>
-            <blockquote class="fragment" style="font-size:0.45em; margin-top:0.4em;">
-                Java lukker gapet — det skjer release for release. Kotlin var der først.
-            </blockquote>
-        </section>
-
-        <!-- ═══════════════════════════════════
-             SEKSJON 7: KONKLUSJON
-             ═══════════════════════════════════ -->
-
-        <!-- Slide 19: Konklusjon -->
-        <section>
-            <span class="section-badge">Reisebrevet avsluttes</span>
-            <h2>
-                <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <radialGradient id="kg-slide-27" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
-                                        gradientTransform="translate(48 0) rotate(180) scale(48)">
-                            <stop stop-color="#E44857"/>
-                            <stop offset="0.504494" stop-color="#C711E1"/>
-                            <stop offset="1" stop-color="#7F52FF"/>
-                        </radialGradient>
-                    </defs>
-                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kg-slide-27)"/>
-                </svg>
-                Hva sitter jeg igjen med?
-            </h2>
-            <ul>
-                <li class="fragment fade-up">Kotlin er et gjennomtenkt språk</li>
-                <li class="fragment fade-up">Det har vært med oss lenge nå — ikke en hype</li>
-                <li class="fragment fade-up">Koden blir mer kompakt - øker lesbarhet</li>
-                <li class="fragment fade-up">Nullpointers er (nesten) et saga blott</li>
-                <li class="fragment fade-up">Spring + Kotlin fungerer meget bra — lite friksjon i hverdagen</li>
-                <li class="fragment fade-up">Java henter inn — men Kotlin var der først, og er der nå</li>
-            </ul>
-        </section>
-
-        <!-- Slide 20: Referanser -->
-        <section>
-            <span class="section-badge">Referanser</span>
-            <h2>
-                <svg class="slide-logo" data-id="slide-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <radialGradient id="kg-slide-29" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
-                                        gradientTransform="translate(48 0) rotate(180) scale(48)">
-                            <stop stop-color="#E44857"/>
-                            <stop offset="0.504494" stop-color="#C711E1"/>
-                            <stop offset="1" stop-color="#7F52FF"/>
-                        </radialGradient>
-                    </defs>
-                    <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kg-slide-29)"/>
-                </svg>
-                Kilder
-            </h2>
-            <table style="font-size:0.42em;">
-                <tbody>
-                <tr>
-                    <td><a href="https://survey.stackoverflow.co/2025/technology" target="_blank"
-                           style="color:var(--kotlin-teal);">Stack Overflow Developer Survey 2025 — Technology</a></td>
-                </tr>
-                <tr>
-                    <td><a href="https://devecosystem-2025.jetbrains.com" target="_blank"
-                           style="color:var(--kotlin-teal);">JetBrains Developer Ecosystem Report 2025</a></td>
-                </tr>
-                <tr>
-                    <td><a href="https://spring.io/guides/tutorials/spring-boot-kotlin" target="_blank"
-                           style="color:var(--kotlin-teal);">Spring.io — Building web applications with Spring Boot and
-                        Kotlin</a></td>
-                </tr>
-                <tr>
-                    <td><a href="https://2025.kotlinconf.com/talks/814508/" target="_blank"
-                           style="color:var(--kotlin-teal);">KotlinConf 2025 — Kotlin and Spring: The modern server side
-                        stack (Rod Johnson)</a></td>
-                </tr>
-                <tr>
-                    <td><a href="https://blog.jetbrains.com/kotlin/2025/05/strategic-partnership-with-spring/"
-                           target="_blank" style="color:var(--kotlin-teal);">JetBrains blogg — Strengthening Kotlin for
-                        Backend Development</a></td>
-                </tr>
-                <tr>
-                    <td><a href="https://nipafx.dev/jspecify-valhalla/" target="_blank"
-                           style="color:var(--kotlin-teal);">How Project Valhalla And JSpecify Can Kill NPEs</a></td>
-                </tr>
-                <tr>
-                    <td><a href="https://www.javacodegeeks.com/2017/05/project-amber-future-java-exposed.html" target="_blank" style="color:var(--kotlin-teal);">Java
-                        Code Geeks (Project Amber)</a></td>
-                </tr>
-                <tr>
-                    <td><a href="https://kotlinlang.org/docs/home.html" target="_blank"
-                           style="color:var(--kotlin-teal);">Kotlin — offisiell dokumentasjon</a></td>
-                </tr>
-                <tr>
-                    <td><a href="https://blog.jetbrains.com/kotlin/2011/08/why-jetbrains-needs-kotlin" target="_blank"
-                           style="color:var(--kotlin-teal);">Why JetBrains need Kotlin</a></td>
-                </tr>
-                <tr>
-                    <td><a href="https://en.wikipedia.org/wiki/Kotlin" target="_blank"
-                           style="color:var(--kotlin-teal);">Wikipedia - Kotlin</a></td>
-                </tr>
-                <tr>
-                    <td><a href="https://blog.jetbrains.com/kotlin/2025/05/kotlinconf-2025-language-features-ai-powered-development-and-kotlin-multiplatform/" target="_blank"
-                           style="color:var(--kotlin-teal);">JetBrains blogg — KotlinConf 2025: Language Features</a></td>
-                </tr>
-                <tr>
-                    <td><a href="https://spring.io/blog/2025/12/18/next-level-kotlin-support-in-spring-boot-4" target="_blank"
-                           style="color:var(--kotlin-teal);">Spring Blog — Next-Level Kotlin Support in Spring Boot 4</a></td>
-                </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <!-- Slide 21: Takk / Spørsmål -->
-        <section>
-            <svg class="kotlin-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <radialGradient id="kg2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
-                                    gradientTransform="translate(48 0) rotate(180) scale(48)">
-                        <stop stop-color="#E44857"/>
-                        <stop offset="0.504494" stop-color="#C711E1"/>
-                        <stop offset="1" stop-color="#7F52FF"/>
-                    </radialGradient>
-                </defs>
-                <path d="M48 48H0V0H48L23.505 23.6475L48 48Z" fill="url(#kg2)"/>
-            </svg>
-            <h1>Takk!</h1>
-            <p style="font-size:0.42em; color:var(--text-muted);">Spørsmål, kommentarer, erfaringer?</p>
-            <p style="font-size:0.38em; color:var(--kotlin-purple); margin-top:1em;">
-                Prøv ut Kotlin: <a href="https://play.kotlinlang.org" target="_blank"
-                                   style="color:var(--kotlin-teal); text-decoration:none;">play.kotlinlang.org</a>
-            </p>
-            <p class="title-meta">
-                Espen Ønvik Pedersen<br/>
-                For Brønnøysundregistrene 2026
-            </p>
-            <p style="font-size:0.28em; color:#666; margin-top:2.5em; opacity:0.6;">
-                Laget med <a href="https://revealjs.com" target="_blank" 
-                           style="color:#666; text-decoration:none;">Reveal.js</a>
-            </p>
-        </section>
-
-    </div>
-</div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/plugin/notes/notes.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/plugin/highlight/highlight.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/plugin/zoom/zoom.min.js"></script>
-
-<script>
-    Reveal.initialize({
-        hash: true,
-        slideNumber: "c/t",
-
-
-        transition: 'fade',
-        transitionSpeed: 'fast',
-        backgroundTransition: 'fade',
-        controls: true,
-        progress: true,
-        center: true,
-        width: 1280,
-        height: 720,
-        margin: 0.06,
-        plugins: [RevealNotes, RevealHighlight, RevealZoom]
-    });
-
-</script>
+                <div class="talk-author">Av Espen Ønvik Pedersen</div>
+            </a>
+        </div>
+    </section>
 </body>
 </html>
