@@ -1,218 +1,47 @@
 <!DOCTYPE html>
-<html lang="no">
+<html lang="nb">
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Tidya Talks</title>
-    
-    <style>
-        :root {
-            --tidya-bg-primary: #1a1816;
-            --tidya-bg-secondary: #272422;
-            --tidya-accent: #ffbe0b;
-            --tidya-text-primary: #ffffff;
-            --tidya-text-muted: #8d6e63;
-            --tidya-alert: #ff3b3b;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: var(--tidya-bg-primary);
-            color: var(--tidya-text-primary);
-            line-height: 1.6;
-        }
-
-        .header-content {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .hero-title {
-            font-size: clamp(3rem, 8vw, 6rem);
-            font-weight: 800;
-            line-height: 0.95;
-            margin-bottom: 1rem;
-            letter-spacing: -0.02em;
-        }
-
-        .hero-subtitle {
-            font-size: clamp(1.2rem, 3vw, 1.8rem);
-            color: var(--tidya-text-muted);
-            margin-bottom: 0;
-            font-weight: 400;
-            line-height: 1.4;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.2s ease;
-            border: 2px solid transparent;
-            cursor: pointer;
-        }
-
-        .btn-primary {
-            background: var(--tidya-accent);
-            color: var(--tidya-bg-primary);
-        }
-
-        .btn-primary:hover {
-            background: #e6a809;
-            transform: translateY(-1px);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--tidya-accent);
-            border-color: var(--tidya-accent);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 190, 11, 0.1);
-            transform: translateY(-1px);
-        }
-
-        .talks-section {
-            padding: 3rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 3rem;
-            text-align: center;
-        }
-
-        .talks-grid {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-        }
-        
-        .talk-card {
-            background: var(--tidya-bg-secondary);
-            border-radius: 12px;
-            padding: 2rem;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: inherit;
-            display: block;
-            border: 1px solid rgba(255, 190, 11, 0.2);
-            max-width: 600px;
-            width: 100%;
-        }
-
-        .talk-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            border-color: rgba(255, 190, 11, 0.4);
-        }
-
-        .talk-meta {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .talk-duration {
-            background: rgba(255, 190, 11, 0.15);
-            color: var(--tidya-accent);
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-
-        .talk-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: var(--tidya-text-primary);
-        }
-
-        .talk-subtitle {
-            color: var(--tidya-text-muted);
-            font-size: 1rem;
-            margin-bottom: 1rem;
-            font-style: italic;
-        }
-
-        .talk-description {
-            color: var(--tidya-text-primary);
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-
-        .talk-author {
-            color: var(--tidya-text-muted);
-            font-size: 0.95rem;
-            font-weight: 500;
-        }
-
-        @media (max-width: 768px) {
-            .hero {
-                padding: 1rem;
-            }
-            
-            .hero-buttons {
-                flex-direction: column;
-            }
-            
-            .btn {
-                justify-content: center;
-            }
-            
-            .talks-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .talk-card {
-                padding: 1.5rem;
-            }
-        }
-    </style>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Tidya Talks</title>
+	<meta name="description" content="Presentasjoner og foredrag fra Tidya sine konsulenter.">
+	<meta name="theme-color" content="#1c1712" media="(prefers-color-scheme: dark)">
+	<meta name="theme-color" content="#fbf6ea" media="(prefers-color-scheme: light)">
+	<link rel="icon" href="brand/favicon.ico" sizes="32x32">
+	<link rel="icon" href="brand/favicon.svg" type="image/svg+xml">
+	<link rel="apple-touch-icon" href="brand/apple-touch-icon.png">
+	<link rel="stylesheet" href="tokens.css">
+	<link rel="stylesheet" href="components.css">
+	<link rel="stylesheet" href="talks.css">
 </head>
 <body>
-    <section class="talks-section" id="talks">
-        <div class="header-content">
-            <h1 class="hero-title">Tidya Talks</h1>
-            <p class="hero-subtitle">Presentasjoner og foredrag fra våre konsulenter</p>
-        </div>
-        
-        <div class="talks-grid">
-            <a href="bekjentskap-med-kotlin.html" class="talk-card">
-                <div class="talk-meta">
-                    <span class="talk-duration">15–20 min</span>
-                </div>
-                <h3 class="talk-title">Bekjentskap med Kotlin</h3>
-                <p class="talk-subtitle">— en Javaveterans reisebrev</p>
-                <div class="talk-description">
-                    Kotlin er noe mange har hørt om som alternativ til Java. Jeg havnet plutselig i et rent Kotlin-prosjekt etter mange år som Java-utvikler, og her deler jeg litt erfaringer og tanker etter 6 måneder med Kotlin på Våpenregisteret.
-                </div>
-                <div class="talk-author">Av Espen Ønvik Pedersen</div>
-            </a>
-        </div>
-    </section>
+<main class="page">
+
+	<div class="logo">
+		<img class="logo-for-dark" src="brand/logo-mork-bakgrunn.svg" alt="Tidya" height="32">
+		<img class="logo-for-light" src="brand/logo-lys-bakgrunn.svg" alt="Tidya" height="32">
+	</div>
+
+	<header class="header">
+		<p class="eyebrow">Foredrag</p>
+		<h1 class="h1">Tidya Talks</h1>
+		<p class="header-sub">Presentasjoner og foredrag fra våre konsulenter</p>
+	</header>
+
+	<section aria-labelledby="foredrag">
+		<h2 class="sr-only" id="foredrag">Foredrag</h2>
+		<div class="card">
+			<p class="card-title">15–20 minutter</p>
+			<h3 class="h3">Bekjentskap med Kotlin</h3>
+			<p class="note">— en Javaveterans reisebrev</p>
+			<p class="card-body talk-description">Kotlin er noe mange har hørt om som alternativ til Java. Jeg havnet plutselig i et rent Kotlin-prosjekt etter mange år som Java-utvikler, og her deler jeg litt erfaringer og tanker etter 6 måneder med Kotlin på Våpenregisteret.</p>
+			<div class="talk-meta">
+				<a class="btn-primary" href="bekjentskap-med-kotlin.html">Åpne presentasjonen</a>
+				<span class="note">Av Espen Ønvik Pedersen</span>
+			</div>
+		</div>
+	</section>
+
+</main>
 </body>
 </html>
