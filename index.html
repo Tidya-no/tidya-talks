@@ -16,14 +16,15 @@
 	<link rel="stylesheet" href="talks.css">
 </head>
 <body>
-<header class="site-header" id="site-header">
+<header class="site-header">
 	<div class="site-header-inner">
 		<div class="logo">
 			<img class="logo-for-dark" src="brand/logo-mork-bakgrunn.svg" alt="Tidya" height="32">
 			<img class="logo-for-light" src="brand/logo-lys-bakgrunn.svg" alt="Tidya" height="32">
 		</div>
-		<button class="theme-toggle" id="themeBtn" type="button" onclick="toggleTheme()" aria-label="Bytt til lys modus" title="Bytt til lys modus">
-			<span class="theme-toggle-icon" id="themeIcon" aria-hidden="true">☀️</span>
+		<button class="theme-toggle" type="button" onclick="toggleTheme()">
+			<span class="theme-toggle-icon" data-theme-icon aria-hidden="true">☀️</span>
+			<span data-theme-label>Lys modus</span>
 		</button>
 	</div>
 </header>
@@ -49,11 +50,5 @@
 </main>
 
 <script src="theme.js"></script>
-<script>
-	const header = document.getElementById('site-header')
-	const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 0)
-	window.addEventListener('scroll', onScroll, { passive: true })
-	onScroll()
-</script>
 </body>
 </html>
