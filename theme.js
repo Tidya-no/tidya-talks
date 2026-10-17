@@ -1,7 +1,7 @@
 (() => {
 	const root = document.documentElement
 	const icon = document.getElementById('themeIcon')
-	const label = document.getElementById('themeLabel')
+	const button = document.getElementById('themeBtn')
 	const storageKey = 'tidya-talks-theme'
 	const prefersLight = window.matchMedia('(prefers-color-scheme: light)')
 
@@ -14,7 +14,9 @@
 	const render = () => {
 		const isDark = currentTheme() === 'dark'
 		icon.textContent = isDark ? '☀️' : '🌙'
-		label.textContent = isDark ? 'Lys modus' : 'Mørk modus'
+		const text = isDark ? 'Bytt til lys modus' : 'Bytt til mørk modus'
+		button.setAttribute('aria-label', text)
+		button.title = text
 	}
 
 	const saved = readSaved()
