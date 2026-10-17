@@ -1,0 +1,54 @@
+name: Publiser til GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  bygg:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Samle sidefiler
+        run: |
+          mkdir _site
+          cp index.html bekjentskap-med-kotlin.html tokens.css components.css talks.css theme.js _site/
+          cp -r fonts _site/fonts
+          cp -r brand _site/brand
+          touch _site/.nojekyll
+
+      - name: Cache-busting for CSS og JS
+        run: |
+          v="${GITHUB_SHA::7}"
+          sed -i -e "s|href=\"tokens.css\"|href=\"tokens.css?v=$v\"|" \
+                 -e "s|href=\"components.css\"|href=\"components.css?v=$v\"|" \
+                 -e "s|href=\"talks.css\"|href=\"talks.css?v=$v\"|" \
+                 -e "s|src=\"theme.js\"|src=\"theme.js?v=$v\"|" _site/index.html
+          test "$(grep -c "?v=$v" _site/index.html)" -ge 4
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  publiser:
+    needs: bygg
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
