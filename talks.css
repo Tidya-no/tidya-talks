@@ -19,7 +19,8 @@
 .theme-toggle-icon { font-size: var(--text-base); }
 
 /* Foredragskort: tittelen er lenken, hele kortet er klikkbart */
-.talk-card { position: relative; }
+.talk-card { position: relative; transition: background-color var(--t-fast), border-color var(--t-fast), transform var(--t-fast); }
+.talk-card:hover { background-image: linear-gradient(var(--color-accent-bg-subtle), var(--color-accent-bg-subtle)); border-color: var(--color-accent-border); transform: translateY(calc(var(--space-1) / -2)); }
 .talk-card .card-link::after { content: ""; position: absolute; inset: 0; border-radius: var(--r-xl); }
 .talk-card .card-link:focus-visible { outline: none; }
 .talk-card .card-link:focus-visible::after { outline: 2px solid var(--color-accent-border); outline-offset: 2px; }
