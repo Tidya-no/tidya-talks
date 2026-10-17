@@ -7,6 +7,7 @@
 	<meta name="description" content="Foredrag og presentasjoner fra konsulentene våre.">
 	<meta name="theme-color" content="#1c1712" media="(prefers-color-scheme: dark)">
 	<meta name="theme-color" content="#fbf6ea" media="(prefers-color-scheme: light)">
+	<script>try{var t=localStorage.getItem('tidya-talks-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 	<link rel="icon" href="brand/favicon.ico" sizes="32x32">
 	<link rel="icon" href="brand/favicon.svg" type="image/svg+xml">
 	<link rel="apple-touch-icon" href="brand/apple-touch-icon.png">
@@ -15,17 +16,25 @@
 	<link rel="stylesheet" href="talks.css">
 </head>
 <body>
+<header class="site-header" id="site-header">
+	<div class="site-header-inner">
+		<div class="logo">
+			<img class="logo-for-dark" src="brand/logo-mork-bakgrunn.svg" alt="Tidya" height="32">
+			<img class="logo-for-light" src="brand/logo-lys-bakgrunn.svg" alt="Tidya" height="32">
+		</div>
+		<button class="theme-toggle" id="themeBtn" type="button" onclick="toggleTheme()">
+			<span class="theme-toggle-icon" id="themeIcon" aria-hidden="true">☀️</span>
+			<span id="themeLabel">Lys modus</span>
+		</button>
+	</div>
+</header>
+
 <main class="page">
 
-	<div class="logo">
-		<img class="logo-for-dark" src="brand/logo-mork-bakgrunn.svg" alt="Tidya" height="32">
-		<img class="logo-for-light" src="brand/logo-lys-bakgrunn.svg" alt="Tidya" height="32">
-	</div>
-
-	<header>
+	<div class="intro">
 		<h1 class="h1">Tidya Talks</h1>
 		<p class="header-sub">Foredrag og presentasjoner fra konsulentene våre</p>
-	</header>
+	</div>
 
 	<section aria-labelledby="foredrag">
 		<h2 class="sr-only" id="foredrag">Foredrag</h2>
@@ -42,5 +51,13 @@
 	</section>
 
 </main>
+
+<script src="theme.js"></script>
+<script>
+	const header = document.getElementById('site-header')
+	const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 0)
+	window.addEventListener('scroll', onScroll, { passive: true })
+	onScroll()
+</script>
 </body>
 </html>
