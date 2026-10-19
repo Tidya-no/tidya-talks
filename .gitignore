@@ -73,6 +73,7 @@ coverage/
 screenshots/
 test-results/
 *.png
+!brand/*.png
 *.jpg
 *.jpeg
 *.gif
