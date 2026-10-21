@@ -1,3 +1,4 @@
 /* Tidya Talks: bare det som er spesifikt for forsiden. Resten (tokens, header, kort, footer, effekter) kommer fra guiden. */
 .site-header-inner, .container { --site-width: 860px; }
 .foredrag { padding-top: 0; }
+.site-footer { padding-block: var(--space-5); }
