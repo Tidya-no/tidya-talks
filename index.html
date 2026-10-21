@@ -2,11 +2,11 @@
 <html lang="nb">
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 	<title>Tidya Talks</title>
 	<meta name="description" content="Lærdom fra konsulentoppdrag, delt av dem som var der. Korte foredrag fra Tidya.">
 	<meta name="theme-color" content="#1a1816" media="(prefers-color-scheme: dark)">
-	<meta name="theme-color" content="#fbf6ea" media="(prefers-color-scheme: light)">
+	<meta name="theme-color" content="#f7f3ee" media="(prefers-color-scheme: light)">
 	<script>try{var t=localStorage.getItem('tidya-talks-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 	<link rel="icon" href="brand/favicon.ico" sizes="32x32">
 	<link rel="icon" href="brand/favicon.svg" type="image/svg+xml">
@@ -15,40 +15,63 @@
 	<link rel="stylesheet" href="components.css">
 	<link rel="stylesheet" href="talks.css">
 </head>
-<body>
+<body class="editorial">
+<div class="grain" aria-hidden="true"></div>
+
 <header class="site-header">
 	<div class="site-header-inner">
-		<div class="logo">
-			<img class="logo-for-dark" src="brand/logo-mork-bakgrunn.svg" alt="Tidya" height="32">
-			<img class="logo-for-light" src="brand/logo-lys-bakgrunn.svg" alt="Tidya" height="32">
+		<a class="site-brand" href="./">
+			<span class="logo">
+				<img class="logo-for-dark" src="brand/logo-mork-bakgrunn.svg" alt="Tidya" height="32">
+				<img class="logo-for-light" src="brand/logo-lys-bakgrunn.svg" alt="Tidya" height="32">
+			</span>
+		</a>
+		<div class="site-header-actions">
+			<nav class="site-nav" id="site-nav" aria-label="Hovedmeny">
+				<a href="#foredrag" aria-current="page">Foredrag</a>
+				<a href="https://tidya.no">tidya.no</a>
+			</nav>
+			<button class="theme-toggle" type="button" data-theme-toggle data-theme-key="tidya-talks-theme" aria-label="Bytt til lys modus">
+				<svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+				<svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/></svg>
+			</button>
+			<button class="site-nav-toggle" type="button" data-nav-toggle aria-label="Åpne meny" aria-expanded="false" aria-controls="site-nav">
+				<svg class="icon-menu" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+				<svg class="icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+			</button>
 		</div>
-		<button class="theme-toggle" type="button" onclick="toggleTheme()">
-			<span class="theme-toggle-icon" data-theme-icon aria-hidden="true">☀️</span>
-			<span data-theme-label>Lys modus</span>
-		</button>
 	</div>
 </header>
 
-<main class="page">
-
-	<div class="intro">
-		<h1 class="h1">Tidya Talks</h1>
-		<p class="header-sub">Lærdom fra konsulentoppdrag, delt av dem som var der. Korte foredrag fra Tidya.</p>
-	</div>
-
-	<section aria-labelledby="foredrag">
-		<h2 class="sr-only" id="foredrag">Foredrag</h2>
-		<div class="card talk-card">
-			<p class="card-title">15–20 minutter</p>
-			<h3 class="h3"><a class="card-link" href="bekjentskap-med-kotlin.html">Bekjentskap med Kotlin</a></h3>
-			<p class="note">— en Javaveterans reisebrev</p>
-			<p class="note">Av Espen Ønvik Pedersen</p>
-			<p class="card-body">Kotlin er noe mange har hørt om som alternativ til Java. Jeg havnet plutselig i et rent Kotlin-prosjekt etter mange år som Java-utvikler, og her deler jeg litt erfaringer og tanker etter 6 måneder med Kotlin.</p>
+<main class="site-header-offset">
+	<section class="section-pad">
+		<div class="container">
+			<h1 class="h1" data-rise="1">Tidya Talks</h1>
+			<p class="lead" data-rise="2">Lærdom fra konsulentoppdrag, delt av dem som var der. Korte foredrag fra Tidya.</p>
 		</div>
 	</section>
 
+	<section class="section-pad foredrag" id="foredrag" aria-labelledby="foredrag-tittel">
+		<div class="container">
+			<h2 class="sr-only" id="foredrag-tittel">Foredrag</h2>
+			<a class="card card-accent card-link card-wave" href="bekjentskap-med-kotlin.html" data-reveal>
+				<span class="card-tag">15–20 minutter</span>
+				<h3 class="h3">Bekjentskap med Kotlin</h3>
+				<p class="note">— en Javaveterans reisebrev. Av Espen Ønvik Pedersen</p>
+				<p class="card-body">Kotlin er noe mange har hørt om som alternativ til Java. Jeg havnet plutselig i et rent Kotlin-prosjekt etter mange år som Java-utvikler, og her deler jeg litt erfaringer og tanker etter 6 måneder med Kotlin.</p>
+				<span class="card-more">Se foredraget <span class="card-arrow" aria-hidden="true">→</span></span>
+			</a>
+		</div>
+	</section>
 </main>
 
-<script src="theme.js"></script>
+<footer class="site-footer">
+	<div class="container site-footer-inner">
+		<a href="https://tidya.no">tidya.no</a>
+	</div>
+</footer>
+
+<script src="header.js"></script>
+<script src="effects.js"></script>
 </body>
 </html>
