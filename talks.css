@@ -1,4 +1,10 @@
-/* Tidya Talks: bare det som er spesifikt for forsiden. Resten (tokens, header, kort, footer, effekter) kommer fra guiden. */
+/* Tidya Talks: bare det som er spesifikt for forsiden. Resten (tokens, header, kort, footer, effekter) kommer fra guiden.
+   Kompakt, så forsiden får plass uten scroll på en iPad Pro (11" og 12,9", begge retninger). */
 .site-header-inner, .container { --site-width: 860px; }
-.foredrag { padding-top: 0; }
+.intro { padding-block: var(--space-5) var(--space-5); }
+.intro .lead { max-width: none; margin-top: var(--space-3); }
+.foredrag { padding-block: 0 var(--space-6); }
+.foredrag .card-wave { padding-bottom: 4rem; }
 .site-footer { padding-block: var(--space-5); }
+body { min-height: 100dvh; display: flex; flex-direction: column; }
+main { flex: 1; }
